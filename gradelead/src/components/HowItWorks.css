@@ -1,0 +1,686 @@
+/* =========================================================
+   GRADELEAD — HOW IT WORKS
+   STACKED 3D LAYER DESIGN
+========================================================= */
+
+.hiw-section {
+  position: relative;
+  width: 100%;
+  padding:  60px 0 80px;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(37, 99, 235, 0.08),
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f5f8ff 100%
+    );
+}
+
+.hiw-container {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.hiw-heading {
+  position: relative;
+  z-index: 5;
+
+  text-align: center;
+
+  margin-bottom: 100px;
+}
+
+.hiw-heading h2 {
+  margin: 0;
+
+  color: #071226;
+
+  font-family:
+    "Plus Jakarta Sans",
+    "Inter",
+    sans-serif;
+
+  font-size: clamp(38px, 5vw, 62px);
+
+  line-height: 1.05;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+}
+
+.hiw-heading h2 span {
+  background: linear-gradient(
+    90deg,
+    #071226,
+    #04215f,
+    #021966,
+    #011a51,
+    #071226
+  );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: hiwGradient 6s ease infinite;
+}
+
+@keyframes hiwGradient {
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.hiw-heading p {
+  max-width: 620px;
+
+  margin: 22px auto 0;
+
+  color: #64748b;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   STACK
+========================================================= */
+
+.hiw-stack {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 1050px;
+
+  padding-top: 20px;
+}
+
+/* =========================================================
+   CENTER GLOW
+========================================================= */
+
+.hiw-stack-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 100px;
+
+  width: 500px;
+  height: 700px;
+
+  transform: translateX(-50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(37, 99, 235, 0.12),
+      transparent 65%
+    );
+
+  filter: blur(35px);
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* =========================================================
+   CENTER LINE
+========================================================= */
+
+.hiw-stack-line {
+  position: absolute;
+
+  top: 80px;
+  bottom: 80px;
+
+  left: 50%;
+
+  width: 2px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 99, 235, 0.45),
+    rgba(6, 182, 212, 0.45),
+    transparent
+  );
+
+  z-index: 1;
+}
+
+/* =========================================================
+   LAYER
+========================================================= */
+
+.hiw-layer {
+  position: relative;
+
+  width: 72%;
+
+  min-height: 260px;
+
+  margin-bottom: 55px;
+
+  z-index: 3;
+}
+
+/* =========================================================
+   LAYER POSITIONS
+========================================================= */
+
+/* CAPTURE */
+
+.hiw-layer-0 {
+  margin-left: 4%;
+}
+
+/* QUALIFY */
+
+.hiw-layer-1 {
+  margin-left: 14%;
+}
+
+/* ENGAGE */
+
+.hiw-layer-2 {
+  margin-left: 24%;
+}
+
+/* =========================================================
+   LAYER CARD
+========================================================= */
+
+.hiw-layer-card {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 250px;
+
+  padding: 35px;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(245, 249, 255, 0.96)
+    );
+
+  border: 1px solid rgba(37, 99, 235, 0.14);
+
+  box-shadow:
+    0 10px 20px rgba(15, 23, 42, 0.04),
+    0 30px 70px rgba(37, 99, 235, 0.10);
+
+  overflow: hidden;
+
+  transform: perspective(1000px) rotateX(1deg);
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+/* =========================================================
+   3D EDGE
+========================================================= */
+
+.hiw-layer-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: -12px;
+
+  height: 18px;
+
+  border-radius: 0 0 22px 22px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #dbeafe,
+      #bfdbfe,
+      #cffafe
+    );
+
+  transform: skewX(-25deg);
+
+  opacity: 0.8;
+
+  z-index: -1;
+}
+
+/* =========================================================
+   TOP EDGE
+========================================================= */
+
+.hiw-layer-card::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+
+  top: 0;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(37, 99, 235, 0.55),
+    rgba(6, 182, 212, 0.55),
+    transparent
+  );
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.hiw-layer:hover .hiw-layer-card {
+  transform:
+    perspective(1000px)
+    rotateX(0deg)
+    translateY(-8px);
+
+  border-color: rgba(37, 99, 235, 0.28);
+
+  box-shadow:
+    0 20px 30px rgba(15, 23, 42, 0.06),
+    0 45px 90px rgba(37, 99, 235, 0.18);
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.hiw-layer-content {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  align-items: center;
+
+  gap: 40px;
+
+  min-height: 180px;
+}
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.hiw-layer-text {
+  position: relative;
+
+  z-index: 2;
+}
+
+.hiw-layer-small {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #2563eb;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.hiw-layer-text h3 {
+  margin: 0;
+
+  color: #071226;
+
+  font-family:
+    "Plus Jakarta Sans",
+    "Inter",
+    sans-serif;
+
+  font-size: clamp(30px, 3vw, 44px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  font-weight: 800;
+}
+
+.hiw-layer-text p {
+  max-width: 310px;
+
+  margin: 18px 0 0;
+
+  color: #64748b;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.hiw-layer-image {
+  position: relative;
+
+  z-index: 2;
+}
+
+.hiw-layer-browser {
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.12);
+}
+
+.hiw-layer-browser-bar {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  height: 28px;
+
+  padding: 0 12px;
+
+  background: #0b1435;
+}
+
+.hiw-layer-browser-bar span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+}
+
+.hiw-layer-browser-bar span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.hiw-layer-browser-bar span:nth-child(2) {
+  background: #febc2e;
+}
+
+.hiw-layer-browser-bar span:nth-child(3) {
+  background: #28c840;
+}
+
+.hiw-layer-browser img {
+  display: block;
+
+  width: 100%;
+
+  height: 190px;
+
+  object-fit: cover;
+}
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.hiw-layer-number {
+  position: absolute;
+
+  top: 50%;
+
+  left: -58px;
+
+  transform: translateY(-50%);
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #06b6d4
+    );
+
+  border: 4px solid #ffffff;
+
+  color: #ffffff;
+
+  font-family:
+    "Plus Jakarta Sans",
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 24px rgba(37, 99, 235, 0.3);
+
+  z-index: 5;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.hiw-layer-0 {
+  animation: hiwLayerFloat1 6s ease-in-out infinite;
+}
+
+.hiw-layer-1 {
+  animation: hiwLayerFloat2 6s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+.hiw-layer-2 {
+  animation: hiwLayerFloat3 6s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+@keyframes hiwLayerFloat1 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes hiwLayerFloat2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes hiwLayerFloat3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .hiw-stack {
+    min-height: auto;
+  }
+
+  .hiw-layer,
+  .hiw-layer-0,
+  .hiw-layer-1,
+  .hiw-layer-2 {
+    width: 88%;
+
+    margin-left: 6%;
+  }
+
+  .hiw-layer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hiw-layer-image {
+    order: -1;
+  }
+
+  .hiw-layer-browser img {
+    height: 230px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .hiw-section {
+    padding: 80px 0 100px;
+  }
+
+  .hiw-heading {
+    margin-bottom: 65px;
+  }
+
+  .hiw-heading h2 {
+    font-size: 36px;
+    letter-spacing: -1.8px;
+  }
+
+  .hiw-heading p {
+    font-size: 14px;
+  }
+
+  .hiw-stack {
+    width: 100%;
+  }
+
+  .hiw-stack-line {
+    left: 18px;
+  }
+
+  .hiw-layer,
+  .hiw-layer-0,
+  .hiw-layer-1,
+  .hiw-layer-2 {
+    width: calc(100% - 35px);
+
+    margin-left: 35px;
+  }
+
+  .hiw-layer-card {
+    padding: 22px;
+
+    border-radius: 20px;
+  }
+
+  .hiw-layer-content {
+    gap: 25px;
+  }
+
+  .hiw-layer-text h3 {
+    font-size: 32px;
+  }
+
+  .hiw-layer-text p {
+    font-size: 13px;
+  }
+
+  .hiw-layer-browser img {
+    height: 170px;
+  }
+
+  .hiw-layer-number {
+    left: -28px;
+
+    width: 36px;
+    height: 36px;
+
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hiw-heading h2 span,
+  .hiw-layer-0,
+  .hiw-layer-1,
+  .hiw-layer-2 {
+    animation: none;
+  }
+}
