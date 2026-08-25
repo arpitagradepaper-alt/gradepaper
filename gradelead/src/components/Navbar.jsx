@@ -1,5 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { createPortal } from "react-dom";
 import "./Navbar.css";
+
+/* =========================================================
+   MENU DATA
+========================================================= */
 
 const MENU_DATA = {
   features: {
@@ -10,9 +16,18 @@ const MENU_DATA = {
         description:
           "Capture every lead, inquiry, and opportunity from every channel.",
         links: [
-          "Unified lead inbox",
-          "Multi-channel capture",
-          "Instant lead tracking",
+          {
+            label: "Unified lead inbox",
+            to: "/features/lead-inbox",
+          },
+          {
+            label: "Multi-channel capture",
+            to: "/features/lead-capture",
+          },
+          {
+            label: "Instant lead tracking",
+            to: "/features/lead-tracking",
+          },
         ],
       },
       {
@@ -21,9 +36,18 @@ const MENU_DATA = {
         description:
           "Understand your leads and identify the opportunities that matter most.",
         links: [
-          "AI-powered qualification",
-          "Intent signals",
-          "Smart lead scoring",
+          {
+            label: "AI-powered qualification",
+            to: "/features/qualification",
+          },
+          {
+            label: "Intent signals",
+            to: "/features/intent-signals",
+          },
+          {
+            label: "Smart lead scoring",
+            to: "/features/lead-scoring",
+          },
         ],
       },
       {
@@ -32,9 +56,18 @@ const MENU_DATA = {
         description:
           "Automatically focus your team on the highest-value opportunities.",
         links: [
-          "Priority ranking",
-          "Buying intent insights",
-          "Opportunity alerts",
+          {
+            label: "Priority ranking",
+            to: "/features/prioritization",
+          },
+          {
+            label: "Buying intent insights",
+            to: "/features/buying-intent",
+          },
+          {
+            label: "Opportunity alerts",
+            to: "/features/alerts",
+          },
         ],
       },
       {
@@ -43,9 +76,18 @@ const MENU_DATA = {
         description:
           "Create personalized conversations across every important touchpoint.",
         links: [
-          "Personalized messaging",
-          "Automated outreach",
-          "Conversation tracking",
+          {
+            label: "Personalized messaging",
+            to: "/features/messaging",
+          },
+          {
+            label: "Automated outreach",
+            to: "/features/outreach",
+          },
+          {
+            label: "Conversation tracking",
+            to: "/features/conversations",
+          },
         ],
       },
     ],
@@ -59,9 +101,18 @@ const MENU_DATA = {
         description:
           "Discover and organize the leads that are most relevant to your business.",
         links: [
-          "Centralized lead data",
-          "Smart segmentation",
-          "Better targeting",
+          {
+            label: "Centralized lead data",
+            to: "/solutions/lead-data",
+          },
+          {
+            label: "Smart segmentation",
+            to: "/solutions/segmentation",
+          },
+          {
+            label: "Better targeting",
+            to: "/solutions/targeting",
+          },
         ],
       },
       {
@@ -70,9 +121,18 @@ const MENU_DATA = {
         description:
           "Use intelligent insights to understand which opportunities deserve attention.",
         links: [
-          "AI qualification",
-          "Intent detection",
-          "Conversion insights",
+          {
+            label: "AI qualification",
+            to: "/solutions/ai-qualification",
+          },
+          {
+            label: "Intent detection",
+            to: "/solutions/intent-detection",
+          },
+          {
+            label: "Conversion insights",
+            to: "/solutions/conversion-insights",
+          },
         ],
       },
       {
@@ -81,9 +141,18 @@ const MENU_DATA = {
         description:
           "Help your team move faster from first interaction to conversion.",
         links: [
-          "Automated workflows",
-          "Timely follow-ups",
-          "Faster conversions",
+          {
+            label: "Automated workflows",
+            to: "/solutions/automation",
+          },
+          {
+            label: "Timely follow-ups",
+            to: "/solutions/follow-ups",
+          },
+          {
+            label: "Faster conversions",
+            to: "/solutions/conversions",
+          },
         ],
       },
       {
@@ -92,9 +161,18 @@ const MENU_DATA = {
         description:
           "Build a consistent and scalable process for managing every opportunity.",
         links: [
-          "Team collaboration",
-          "Process automation",
-          "Performance visibility",
+          {
+            label: "Team collaboration",
+            to: "/solutions/collaboration",
+          },
+          {
+            label: "Process automation",
+            to: "/solutions/process-automation",
+          },
+          {
+            label: "Performance visibility",
+            to: "/solutions/analytics",
+          },
         ],
       },
     ],
@@ -108,9 +186,18 @@ const MENU_DATA = {
         description:
           "Bring every lead and inquiry from every source into one workspace.",
         links: [
-          "Website forms",
-          "Social channels",
-          "Campaign leads",
+          {
+            label: "Website forms",
+            to: "/how-it-works/capture",
+          },
+          {
+            label: "Social channels",
+            to: "/how-it-works/social",
+          },
+          {
+            label: "Campaign leads",
+            to: "/how-it-works/campaigns",
+          },
         ],
       },
       {
@@ -119,9 +206,18 @@ const MENU_DATA = {
         description:
           "Understand intent and identify which opportunities have the highest potential.",
         links: [
-          "Lead intelligence",
-          "Intent signals",
-          "AI qualification",
+          {
+            label: "Lead intelligence",
+            to: "/how-it-works/intelligence",
+          },
+          {
+            label: "Intent signals",
+            to: "/how-it-works/intent",
+          },
+          {
+            label: "AI qualification",
+            to: "/how-it-works/qualification",
+          },
         ],
       },
       {
@@ -130,9 +226,18 @@ const MENU_DATA = {
         description:
           "Create relevant conversations and build stronger relationships.",
         links: [
-          "Personalized outreach",
-          "Automated follow-ups",
-          "Conversation history",
+          {
+            label: "Personalized outreach",
+            to: "/how-it-works/outreach",
+          },
+          {
+            label: "Automated follow-ups",
+            to: "/how-it-works/follow-ups",
+          },
+          {
+            label: "Conversation history",
+            to: "/how-it-works/conversations",
+          },
         ],
       },
       {
@@ -141,9 +246,18 @@ const MENU_DATA = {
         description:
           "Move qualified opportunities forward and turn them into customers.",
         links: [
-          "Pipeline visibility",
-          "Conversion insights",
-          "Revenue growth",
+          {
+            label: "Pipeline visibility",
+            to: "/how-it-works/pipeline",
+          },
+          {
+            label: "Conversion insights",
+            to: "/how-it-works/conversion",
+          },
+          {
+            label: "Revenue growth",
+            to: "/how-it-works/revenue",
+          },
         ],
       },
     ],
@@ -157,9 +271,18 @@ const MENU_DATA = {
         description:
           "Bring your existing sales and marketing tools together.",
         links: [
-          "CRM integrations",
-          "Marketing platforms",
-          "Communication tools",
+          {
+            label: "CRM integrations",
+            to: "/integrations/crm",
+          },
+          {
+            label: "Marketing platforms",
+            to: "/integrations/marketing",
+          },
+          {
+            label: "Communication tools",
+            to: "/integrations/communication",
+          },
         ],
       },
       {
@@ -168,9 +291,18 @@ const MENU_DATA = {
         description:
           "Keep important lead information connected across your workflow.",
         links: [
-          "Data synchronization",
-          "Centralized records",
-          "Real-time updates",
+          {
+            label: "Data synchronization",
+            to: "/integrations/data-sync",
+          },
+          {
+            label: "Centralized records",
+            to: "/integrations/records",
+          },
+          {
+            label: "Real-time updates",
+            to: "/integrations/real-time",
+          },
         ],
       },
       {
@@ -179,9 +311,18 @@ const MENU_DATA = {
         description:
           "Create connected workflows that reduce manual work for your team.",
         links: [
-          "Workflow automation",
-          "Smart triggers",
-          "Action sequences",
+          {
+            label: "Workflow automation",
+            to: "/integrations/workflows",
+          },
+          {
+            label: "Smart triggers",
+            to: "/integrations/triggers",
+          },
+          {
+            label: "Action sequences",
+            to: "/integrations/actions",
+          },
         ],
       },
       {
@@ -190,230 +331,470 @@ const MENU_DATA = {
         description:
           "Create a connected ecosystem that grows alongside your business.",
         links: [
-          "Flexible integrations",
-          "Scalable workflows",
-          "Growing ecosystem",
+          {
+            label: "Flexible integrations",
+            to: "/integrations/flexible",
+          },
+          {
+            label: "Scalable workflows",
+            to: "/integrations/scalable",
+          },
+          {
+            label: "Growing ecosystem",
+            to: "/integrations/ecosystem",
+          },
         ],
       },
     ],
   },
 };
 
+/* =========================================================
+   NAV ITEMS
+========================================================= */
+
+const NAV_ITEMS = [
+  {
+    key: "features",
+    label: "Features",
+    to: "/#features",
+  },
+  {
+    key: "solutions",
+    label: "Solutions",
+    to: "/#solutions",
+  },
+  {
+    key: "howItWorks",
+    label: "How It Works",
+    to: "/#how-it-works",
+  },
+  {
+    key: "integrations",
+    label: "Integrations",
+    to: "/#integrations",
+  },
+];
+
+const MOBILE_BREAKPOINT = 1200;
+
+/* =========================================================
+   NAVBAR COMPONENT
+========================================================= */
+
 export default function Navbar() {
+  const location = useLocation();
+
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" &&
+      window.innerWidth <= MOBILE_BREAKPOINT
+  );
+
   const [activeMenu, setActiveMenu] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileActiveMenu, setMobileActiveMenu] = useState(null);
 
-  const handleMenuEnter = (menu) => {
-    setActiveMenu(menu);
-  };
+  /* =======================================================
+     RESPONSIVE DETECTION
+  ======================================================= */
 
-  const handleMenuLeave = () => {
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile =
+        window.innerWidth <= MOBILE_BREAKPOINT;
+
+      setIsMobile(mobile);
+
+      if (!mobile) {
+        setMobileMenuOpen(false);
+        setMobileActiveMenu(null);
+      }
+
+      if (mobile) {
+        setActiveMenu(null);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener(
+        "resize",
+        handleResize
+      );
+    };
+  }, []);
+
+  /* =======================================================
+     CLOSE ON ROUTE CHANGE
+  ======================================================= */
+
+  useEffect(() => {
     setActiveMenu(null);
+    setMobileMenuOpen(false);
+    setMobileActiveMenu(null);
+  }, [location.pathname]);
+
+  /* =======================================================
+     BODY SCROLL LOCK
+  ======================================================= */
+
+  useEffect(() => {
+    if (isMobile && mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobile, mobileMenuOpen]);
+
+  /* =======================================================
+     ESCAPE KEY
+  ======================================================= */
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveMenu(null);
+        setMobileMenuOpen(false);
+        setMobileActiveMenu(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+    };
+  }, []);
+
+  /* =======================================================
+     FUNCTIONS
+  ======================================================= */
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((previous) => !previous);
+    setMobileActiveMenu(null);
   };
 
-  return (
-    <header
-      className="navbar"
-      onMouseLeave={handleMenuLeave}
-    >
-      <div className="navbar-container">
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+    setMobileActiveMenu(null);
+  };
 
-        {/* Logo */}
+  const toggleMobileDropdown = (menuKey) => {
+    setMobileActiveMenu((previous) =>
+      previous === menuKey ? null : menuKey
+    );
+  };
 
-        <a href="#" className="navbar-logo">
-          <span className="logo-icon">
-            G
-          </span>
+  /* =======================================================
+     MOBILE PORTAL
+  ======================================================= */
 
-          <span className="logo-text">
-            Grad<span>Lead</span>
-          </span>
-        </a>
-
-
-        {/* Navigation */}
-
-        <nav className="navbar-links">
-
+  const mobileNavigation =
+    isMobile && mobileMenuOpen
+      ? createPortal(
           <div
-            className="nav-menu-item"
-            onMouseEnter={() =>
-              handleMenuEnter("features")
-            }
+            className="mobile-portal"
+            role="dialog"
+            aria-modal="true"
           >
-            <a
-              href="#features"
-              className={
-                activeMenu === "features"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Features
+            <div className="mobile-navigation">
+              <div className="mobile-navigation-inner">
 
-              <span className="nav-arrow">
-                {activeMenu === "features"
-                  ? "⌃"
-                  : "⌄"}
-              </span>
-            </a>
-          </div>
+                {NAV_ITEMS.map((menu) => (
+                  <div
+                    className="mobile-menu-section"
+                    key={menu.key}
+                  >
+                    <div className="mobile-menu-row">
 
+                      <button
+                        type="button"
+                        className="mobile-menu-title"
+                        onClick={() =>
+                          toggleMobileDropdown(menu.key)
+                        }
+                      >
+                        {menu.label}
+                      </button>
 
-          <div
-            className="nav-menu-item"
-            onMouseEnter={() =>
-              handleMenuEnter("solutions")
-            }
-          >
-            <a
-              href="#solutions"
-              className={
-                activeMenu === "solutions"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Solutions
-
-              <span className="nav-arrow">
-                {activeMenu === "solutions"
-                  ? "⌃"
-                  : "⌄"}
-              </span>
-            </a>
-          </div>
-
-
-          <div
-            className="nav-menu-item"
-            onMouseEnter={() =>
-              handleMenuEnter("howItWorks")
-            }
-          >
-            <a
-              href="#how-it-works"
-              className={
-                activeMenu === "howItWorks"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              How It Works
-
-              <span className="nav-arrow">
-                {activeMenu === "howItWorks"
-                  ? "⌃"
-                  : "⌄"}
-              </span>
-            </a>
-          </div>
-
-
-          <div
-            className="nav-menu-item"
-            onMouseEnter={() =>
-              handleMenuEnter("integrations")
-            }
-          >
-            <a
-              href="#integrations"
-              className={
-                activeMenu === "integrations"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              Integrations
-
-              <span className="nav-arrow">
-                {activeMenu === "integrations"
-                  ? "⌃"
-                  : "⌄"}
-              </span>
-            </a>
-          </div>
-
-        </nav>
-
-
-        {/* Right Actions */}
-
-        <div className="navbar-actions">
-
-          <a
-            href="#get-started"
-            className="navbar-cta"
-          >
-            Get Started
-
-            <span>
-              →
-            </span>
-          </a>
-
-        </div>
-
-      </div>
-
-
-      {/* MEGA DROPDOWN */}
-
-      <div
-        className={
-          activeMenu
-            ? "mega-menu mega-menu-open"
-            : "mega-menu"
-        }
-      >
-
-        <div className="mega-menu-container">
-
-          {activeMenu &&
-            MENU_DATA[activeMenu].items.map(
-              (item, index) => (
-                <div
-                  className="mega-column"
-                  key={`${activeMenu}-${index}`}
-                >
-
-                  <div className="mega-icon">
-                    {item.icon}
-                  </div>
-
-
-                  <h3>
-                    {item.title}
-                  </h3>
-
-
-                  <p>
-                    {item.description}
-                  </p>
-
-
-                  <div className="mega-links">
-
-                    {item.links.map(
-                      (link, linkIndex) => (
-                        <a
-                          href="#"
-                          key={`${activeMenu}-${index}-${linkIndex}`}
+                      <button
+                        type="button"
+                        className="mobile-menu-arrow-button"
+                        onClick={() =>
+                          toggleMobileDropdown(menu.key)
+                        }
+                        aria-label={`Toggle ${menu.label}`}
+                      >
+                        <span
+                          className={
+                            mobileActiveMenu === menu.key
+                              ? "arrow-open"
+                              : ""
+                          }
                         >
-                          {link}
-                        </a>
-                      )
+                          ⌄
+                        </span>
+                      </button>
+
+                    </div>
+
+                    {mobileActiveMenu === menu.key && (
+                      <div className="mobile-dropdown">
+
+                        {MENU_DATA[menu.key].items.map(
+                          (item, index) => (
+                            <div
+                              className="mobile-dropdown-card"
+                              key={`${menu.key}-${index}`}
+                            >
+                              <div className="mobile-card-top">
+
+                                <div className="mobile-card-icon">
+                                  {item.icon}
+                                </div>
+
+                                <div className="mobile-card-content">
+
+                                  <h3>
+                                    {item.title}
+                                  </h3>
+
+                                  <p>
+                                    {item.description}
+                                  </p>
+
+                                  <div className="mobile-card-links">
+
+                                    {item.links.map(
+                                      (link, linkIndex) => (
+                                        <Link
+                                          key={`${menu.key}-${index}-${linkIndex}`}
+                                          to={link.to}
+                                          onClick={
+                                            closeMobileMenu
+                                          }
+                                        >
+                                          <span>
+                                            {link.label}
+                                          </span>
+
+                                          <span>
+                                            →
+                                          </span>
+                                        </Link>
+                                      )
+                                    )}
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+                            </div>
+                          )
+                        )}
+
+                      </div>
                     )}
 
                   </div>
+                ))}
 
+                <Link
+                  to="/get-started"
+                  className="mobile-cta"
+                  onClick={closeMobileMenu}
+                >
+                  <span>Get Started</span>
+                  <span>→</span>
+                </Link>
+
+              </div>
+            </div>
+          </div>,
+          document.body
+        )
+      : null;
+
+  /* =======================================================
+     RENDER
+  ======================================================= */
+
+  return (
+    <>
+      <header
+        className="navbar"
+        onMouseLeave={() => {
+          if (!isMobile) {
+            setActiveMenu(null);
+          }
+        }}
+      >
+        <div className="navbar-container">
+
+          {/* LOGO */}
+
+          <Link
+            to="/"
+            className="navbar-logo"
+            onClick={closeMobileMenu}
+          >
+            <span className="logo-icon">
+              G
+            </span>
+
+            <span className="logo-text">
+              Grad<span>Lead</span>
+            </span>
+          </Link>
+
+          {/* DESKTOP NAVIGATION */}
+
+          {!isMobile && (
+            <nav
+              className="navbar-links"
+              aria-label="Main navigation"
+            >
+              {NAV_ITEMS.map((item) => (
+                <div
+                  className="nav-menu-item"
+                  key={item.key}
+                  onMouseEnter={() =>
+                    setActiveMenu(item.key)
+                  }
+                >
+                  <Link
+                    to={item.to}
+                    className={
+                      activeMenu === item.key
+                        ? "nav-link active"
+                        : "nav-link"
+                    }
+                  >
+                    <span>
+                      {item.label}
+                    </span>
+
+                    <span className="nav-arrow">
+                      {activeMenu === item.key
+                        ? "⌃"
+                        : "⌄"}
+                    </span>
+                  </Link>
                 </div>
-              )
-            )}
+              ))}
+            </nav>
+          )}
+
+          {/* DESKTOP GET STARTED */}
+
+          {!isMobile && (
+            <div className="navbar-actions">
+              <Link
+                to="/get-started"
+                className="navbar-cta"
+              >
+                Get Started
+                <span>→</span>
+              </Link>
+            </div>
+          )}
+
+          {/* MOBILE HAMBURGER
+              IMPORTANT: THIS IS INSIDE navbar-container */}
+
+          {isMobile && (
+            <button
+              id="mobile-hamburger-button"
+              type="button"
+              className={
+                mobileMenuOpen
+                  ? "hamburger-button hamburger-open"
+                  : "hamburger-button"
+              }
+              onClick={toggleMobileMenu}
+              aria-label={
+                mobileMenuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
+              aria-expanded={mobileMenuOpen}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          )}
 
         </div>
 
-      </div>
+        {/* DESKTOP MEGA MENU */}
 
-    </header>
+        {!isMobile && activeMenu && (
+          <div
+            className="mega-menu mega-menu-open"
+            onMouseEnter={() =>
+              setActiveMenu(activeMenu)
+            }
+          >
+            <div className="mega-menu-container">
+
+              {MENU_DATA[activeMenu].items.map(
+                (item, index) => (
+                  <div
+                    className="mega-column"
+                    key={`${activeMenu}-${index}`}
+                  >
+                    <div className="mega-icon">
+                      {item.icon}
+                    </div>
+
+                    <h3>
+                      {item.title}
+                    </h3>
+
+                    <p>
+                      {item.description}
+                    </p>
+
+                    <div className="mega-links">
+
+                      {item.links.map(
+                        (link, linkIndex) => (
+                          <Link
+                            to={link.to}
+                            key={`${activeMenu}-${index}-${linkIndex}`}
+                          >
+                            {link.label}
+                          </Link>
+                        )
+                      )}
+
+                    </div>
+                  </div>
+                )
+              )}
+
+            </div>
+          </div>
+        )}
+
+      </header>
+
+      {/* MOBILE MENU */}
+
+      {mobileNavigation}
+    </>
   );
 }

@@ -7,7 +7,7 @@ import qualifyImg from "../assets/features/qualify.png";
 
 const SHOWCASE_ITEMS = [
   {
-    
+   
     label: "AI-POWERED INTELLIGENCE",
     title: "Know which leads are ready to buy",
     description:
@@ -21,7 +21,7 @@ const SHOWCASE_ITEMS = [
     imageAlt: "GradeLead AI-powered lead intelligence dashboard",
   },
   {
-    
+   
     label: "PERSONALIZED ENGAGEMENT",
     title: "Every lead gets the right message",
     description:
@@ -64,24 +64,24 @@ function ProductShowcase() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.dataset.index);
+          if (!entry.isIntersecting) return;
 
-            setVisibleItems((previous) => {
-              if (previous.includes(index)) {
-                return previous;
-              }
+          const index = Number(entry.target.dataset.index);
 
-              return [...previous, index];
-            });
+          setVisibleItems((previous) => {
+            if (previous.includes(index)) {
+              return previous;
+            }
 
-            observer.unobserve(entry.target);
-          }
+            return [...previous, index];
+          });
+
+          observer.unobserve(entry.target);
         });
       },
       {
-        threshold: 0.18,
-        rootMargin: "0px 0px -80px 0px",
+        threshold: 0.12,
+        rootMargin: "0px 0px -60px 0px",
       }
     );
 
@@ -91,18 +91,11 @@ function ProductShowcase() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="product-showcase"
-    >
+    <section ref={sectionRef} className="product-showcase">
       <div className="product-showcase-container">
 
-        {/* =========================
-            HEADER
-        ========================== */}
-
+        {/* HEADER */}
         <div className="product-showcase-header">
-
           <span className="product-showcase-eyebrow">
             INTELLIGENT LEAD MANAGEMENT
           </span>
@@ -117,15 +110,10 @@ function ProductShowcase() {
             GradeLead combines AI intelligence, personalized engagement,
             and smart lead signals into one powerful workspace.
           </p>
-
         </div>
 
-        {/* =========================
-            SHOWCASE ITEMS
-        ========================== */}
-
+        {/* SHOWCASE LIST */}
         <div className="showcase-list">
-
           {SHOWCASE_ITEMS.map((item, index) => {
             const isVisible = visibleItems.includes(index);
 
@@ -134,22 +122,12 @@ function ProductShowcase() {
                 key={item.number}
                 data-index={index}
                 className={`showcase-item ${
-                  index % 2 !== 0
-                    ? "showcase-item-reverse"
-                    : ""
-                } ${
-                  isVisible
-                    ? "showcase-item-visible"
-                    : ""
-                }`}
+                  index % 2 !== 0 ? "showcase-item-reverse" : ""
+                } ${isVisible ? "showcase-item-visible" : ""}`}
               >
 
-                {/* =========================
-                    TEXT CONTENT
-                ========================== */}
-
+                {/* TEXT */}
                 <div className="showcase-content">
-
                   <div className="showcase-number">
                     {item.number}
                   </div>
@@ -158,45 +136,35 @@ function ProductShowcase() {
                     {item.label}
                   </span>
 
-                  <h3>
-                    {item.title}
-                  </h3>
+                  <h3>{item.title}</h3>
 
                   <p className="showcase-description">
                     {item.description}
                   </p>
 
                   <ul className="showcase-points">
-
                     {item.points.map((point) => (
                       <li key={point}>
                         <span className="showcase-check">
                           ✓
                         </span>
 
-                        <span>
+                        <span className="showcase-point-text">
                           {point}
                         </span>
                       </li>
                     ))}
-
                   </ul>
-
                 </div>
 
-                {/* =========================
-                    VISUAL
-                ========================== */}
-
+                {/* VISUAL */}
                 <div className="showcase-visual">
-
                   <div className="showcase-orb showcase-orb-one" />
                   <div className="showcase-orb showcase-orb-two" />
 
                   <div className="showcase-glow" />
 
                   <div className="showcase-image-wrapper">
-
                     <div className="showcase-image-shine" />
 
                     <img
@@ -204,15 +172,12 @@ function ProductShowcase() {
                       alt={item.imageAlt}
                       className="showcase-image"
                     />
-
                   </div>
-
                 </div>
 
               </article>
             );
           })}
-
         </div>
 
       </div>

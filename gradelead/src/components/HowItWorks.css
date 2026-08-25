@@ -1,12 +1,16 @@
 /* =========================================================
    GRADELEAD — HOW IT WORKS
-   STACKED 3D LAYER DESIGN
+   RESPONSIVE STACKED 3D LAYER DESIGN
+========================================================= */
+
+/* =========================================================
+   SECTION
 ========================================================= */
 
 .hiw-section {
   position: relative;
   width: 100%;
-  padding:  60px 0 80px;
+  padding: 60px 0 80px;
   overflow: hidden;
 
   background:
@@ -34,9 +38,7 @@
 .hiw-heading {
   position: relative;
   z-index: 5;
-
   text-align: center;
-
   margin-bottom: 100px;
 }
 
@@ -51,11 +53,8 @@
     sans-serif;
 
   font-size: clamp(38px, 5vw, 62px);
-
   line-height: 1.05;
-
   letter-spacing: -3px;
-
   font-weight: 800;
 }
 
@@ -95,7 +94,6 @@
 
 .hiw-heading p {
   max-width: 620px;
-
   margin: 22px auto 0;
 
   color: #64748b;
@@ -103,7 +101,6 @@
   font-family: "Inter", sans-serif;
 
   font-size: 16px;
-
   line-height: 1.7;
 }
 
@@ -113,11 +110,8 @@
 
 .hiw-stack {
   position: relative;
-
   width: 100%;
-
   min-height: 1050px;
-
   padding-top: 20px;
 }
 
@@ -131,7 +125,7 @@
   left: 50%;
   top: 100px;
 
-  width: 500px;
+  width: min(500px, 100%);
   height: 700px;
 
   transform: translateX(-50%);
@@ -146,7 +140,6 @@
   filter: blur(35px);
 
   pointer-events: none;
-
   z-index: 0;
 }
 
@@ -185,31 +178,26 @@
   position: relative;
 
   width: 72%;
-
   min-height: 260px;
 
   margin-bottom: 55px;
 
   z-index: 3;
+
+  box-sizing: border-box;
 }
 
 /* =========================================================
-   LAYER POSITIONS
+   DESKTOP LAYER POSITIONS
 ========================================================= */
-
-/* CAPTURE */
 
 .hiw-layer-0 {
   margin-left: 4%;
 }
 
-/* QUALIFY */
-
 .hiw-layer-1 {
   margin-left: 14%;
 }
-
-/* ENGAGE */
 
 .hiw-layer-2 {
   margin-left: 24%;
@@ -223,10 +211,11 @@
   position: relative;
 
   width: 100%;
-
   min-height: 250px;
 
   padding: 35px;
+
+  box-sizing: border-box;
 
   border-radius: 26px;
 
@@ -335,7 +324,7 @@
 .hiw-layer-content {
   display: grid;
 
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(280px, 1.2fr);
 
   align-items: center;
 
@@ -350,7 +339,6 @@
 
 .hiw-layer-text {
   position: relative;
-
   z-index: 2;
 }
 
@@ -409,8 +397,8 @@
 
 .hiw-layer-image {
   position: relative;
-
   z-index: 2;
+  min-width: 0;
 }
 
 .hiw-layer-browser {
@@ -439,12 +427,16 @@
 
   padding: 0 12px;
 
+  box-sizing: border-box;
+
   background: #0b1435;
 }
 
 .hiw-layer-browser-bar span {
   width: 8px;
   height: 8px;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
 }
@@ -465,7 +457,6 @@
   display: block;
 
   width: 100%;
-
   height: 190px;
 
   object-fit: cover;
@@ -479,7 +470,6 @@
   position: absolute;
 
   top: 50%;
-
   left: -58px;
 
   transform: translateY(-50%);
@@ -571,33 +561,97 @@
 }
 
 /* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .hiw-layer {
+    width: 82%;
+  }
+
+  .hiw-layer-0 {
+    margin-left: 3%;
+  }
+
+  .hiw-layer-1 {
+    margin-left: 9%;
+  }
+
+  .hiw-layer-2 {
+    margin-left: 15%;
+  }
+
+  .hiw-layer-content {
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 30px;
+  }
+
+  .hiw-layer-card {
+    padding: 30px;
+  }
+}
+
+/* =========================================================
    TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
+  .hiw-section {
+    padding: 70px 0 90px;
+  }
+
   .hiw-stack {
     min-height: auto;
+    padding-bottom: 20px;
+  }
+
+  .hiw-stack-glow {
+    width: 100%;
+    height: 900px;
   }
 
   .hiw-layer,
   .hiw-layer-0,
   .hiw-layer-1,
   .hiw-layer-2 {
-    width: 88%;
+    width: calc(100% - 60px);
 
-    margin-left: 6%;
+    margin-left: 60px;
+
+    margin-bottom: 45px;
+  }
+
+  .hiw-stack-line {
+    left: 28px;
+
+    top: 60px;
+    bottom: 60px;
   }
 
   .hiw-layer-content {
     grid-template-columns: 1fr;
+
+    gap: 28px;
   }
 
   .hiw-layer-image {
     order: -1;
   }
 
+  .hiw-layer-text p {
+    max-width: 100%;
+  }
+
   .hiw-layer-browser img {
-    height: 230px;
+    height: auto;
+
+    aspect-ratio: 16 / 8;
+
+    object-fit: cover;
+  }
+
+  .hiw-layer-number {
+    left: -52px;
   }
 }
 
@@ -607,68 +661,231 @@
 
 @media (max-width: 650px) {
   .hiw-section {
-    padding: 80px 0 100px;
+    padding: 50px 0 70px;
+  }
+
+  .hiw-container {
+    width: min(100% - 24px, 1180px);
   }
 
   .hiw-heading {
-    margin-bottom: 65px;
+    margin-bottom: 50px;
   }
 
   .hiw-heading h2 {
-    font-size: 36px;
-    letter-spacing: -1.8px;
+    font-size: clamp(30px, 9vw, 38px);
+
+    letter-spacing: -1.5px;
   }
 
   .hiw-heading p {
+    margin-top: 16px;
+
     font-size: 14px;
+
+    line-height: 1.6;
   }
 
   .hiw-stack {
     width: 100%;
+
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .hiw-stack-glow {
+    left: 50%;
+
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    filter: blur(25px);
   }
 
   .hiw-stack-line {
     left: 18px;
+
+    top: 40px;
+    bottom: 40px;
+
+    width: 2px;
   }
 
   .hiw-layer,
   .hiw-layer-0,
   .hiw-layer-1,
   .hiw-layer-2 {
-    width: calc(100% - 35px);
+    width: calc(100% - 34px);
 
-    margin-left: 35px;
+    min-height: auto;
+
+    margin-left: 34px;
+
+    margin-bottom: 32px;
+
+    animation: none;
   }
 
   .hiw-layer-card {
-    padding: 22px;
+    min-height: auto;
 
-    border-radius: 20px;
+    padding: 20px;
+
+    border-radius: 18px;
+
+    transform: none;
+  }
+
+  .hiw-layer-card::before {
+    bottom: -8px;
+
+    height: 12px;
+
+    border-radius: 0 0 16px 16px;
+  }
+
+  .hiw-layer:hover .hiw-layer-card {
+    transform: translateY(-3px);
   }
 
   .hiw-layer-content {
-    gap: 25px;
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    min-height: auto;
+  }
+
+  .hiw-layer-image {
+    order: -1;
+
+    width: 100%;
+  }
+
+  .hiw-layer-text {
+    width: 100%;
+  }
+
+  .hiw-layer-small {
+    margin-bottom: 8px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
   }
 
   .hiw-layer-text h3 {
-    font-size: 32px;
+    font-size: clamp(28px, 9vw, 36px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
   }
 
   .hiw-layer-text p {
+    max-width: 100%;
+
+    margin-top: 12px;
+
     font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  .hiw-layer-browser {
+    border-radius: 12px;
+  }
+
+  .hiw-layer-browser-bar {
+    height: 24px;
+
+    padding: 0 10px;
+
+    gap: 5px;
+  }
+
+  .hiw-layer-browser-bar span {
+    width: 7px;
+    height: 7px;
   }
 
   .hiw-layer-browser img {
-    height: 170px;
+    width: 100%;
+
+    height: auto;
+
+    aspect-ratio: 16 / 9;
+
+    object-fit: cover;
   }
 
   .hiw-layer-number {
-    left: -28px;
+    left: -34px;
 
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
 
-    font-size: 10px;
+    border-width: 3px;
+
+    font-size: 9px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .hiw-section {
+    padding: 45px 0 60px;
+  }
+
+  .hiw-container {
+    width: calc(100% - 20px);
+  }
+
+  .hiw-stack-line {
+    left: 15px;
+  }
+
+  .hiw-layer,
+  .hiw-layer-0,
+  .hiw-layer-1,
+  .hiw-layer-2 {
+    width: calc(100% - 30px);
+
+    margin-left: 30px;
+
+    margin-bottom: 28px;
+  }
+
+  .hiw-layer-card {
+    padding: 16px;
+  }
+
+  .hiw-layer-content {
+    gap: 16px;
+  }
+
+  .hiw-layer-text h3 {
+    font-size: 27px;
+  }
+
+  .hiw-layer-text p {
+    font-size: 12.5px;
+  }
+
+  .hiw-layer-number {
+    left: -30px;
+
+    width: 30px;
+    height: 30px;
+
+    font-size: 8px;
   }
 }
 
@@ -681,6 +898,10 @@
   .hiw-layer-0,
   .hiw-layer-1,
   .hiw-layer-2 {
-    animation: none;
+    animation: none !important;
+  }
+
+  .hiw-layer-card {
+    transition: none;
   }
 }
