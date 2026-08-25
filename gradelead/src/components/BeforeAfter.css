@@ -29,15 +29,17 @@
 .before-after-heading {
   position: relative;
 
-  z-index: 100;
-
-  text-align: center;
+  z-index: 10;
 
   margin-bottom: 72px;
+
+  text-align: center;
 }
 
 .before-after-heading h2 {
   margin: 0;
+
+  padding: 0 20px;
 
   color: #071226;
 
@@ -47,7 +49,11 @@
     sans-serif;
 
   font-size:
-    clamp(38px, 4.5vw, 58px);
+    clamp(
+      38px,
+      4.5vw,
+      58px
+    );
 
   font-weight: 800;
 
@@ -70,6 +76,7 @@
   background-size: 250% auto;
 
   -webkit-background-clip: text;
+
   background-clip: text;
 
   -webkit-text-fill-color: transparent;
@@ -82,24 +89,179 @@
 }
 
 @keyframes ba-heading-gradient {
-
   0% {
-    background-position: 0% center;
+    background-position:
+      0% center;
   }
 
   50% {
-    background-position: 100% center;
+    background-position:
+      100% center;
   }
 
   100% {
-    background-position: 0% center;
+    background-position:
+      0% center;
   }
+}
 
+
+/* =========================================================
+   STAGE WRAPPER
+
+   This wrapper is intentionally overflow visible.
+
+   The Before / After button is placed here,
+   OUTSIDE the clipped ba-stage.
+========================================================= */
+
+.ba-stage-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  padding-top: 62px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   BEFORE / AFTER BUTTON
+
+   OUTSIDE ba-stage.
+   Therefore it cannot be clipped by ba-stage.
+========================================================= */
+
+.ba-connected-control {
+  position: absolute;
+
+  top: 8px;
+
+  transform:
+    translateX(-50%);
+
+  z-index: 100;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 180px;
+
+  height: 54px;
+
+  border:
+    1px solid
+    rgba(15, 23, 42, 0.12);
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 35px
+    rgba(15, 23, 42, 0.18);
+
+  visibility: visible;
+
+  opacity: 1;
+
+  pointer-events: auto;
+
+  cursor: ew-resize;
+
+  touch-action: none;
+
+  user-select: none;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   BUTTON LABELS
+========================================================= */
+
+.ba-connected-label {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex: 1;
+
+  height: 100%;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  visibility: visible;
+
+  opacity: 1;
+}
+
+.ba-connected-before {
+  color: #6b7280;
+}
+
+.ba-connected-after {
+  color: #04246a;
+}
+
+
+/* =========================================================
+   BUTTON CENTER ARROW
+========================================================= */
+
+.ba-connected-arrow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 38px;
+
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #07102c,
+      #022570
+    );
+
+  box-shadow:
+    0 5px 16px
+    rgba(37, 99, 235, 0.32);
+
+  font-size: 17px;
+
+  font-weight: 700;
 }
 
 
 /* =========================================================
    MAIN STAGE
+
+   Cards stay inside this element and can be clipped.
 ========================================================= */
 
 .ba-stage {
@@ -111,16 +273,18 @@
 
   height: 390px;
 
-  overflow: hidden;
+  overflow: visible;
 
   background: #f5f6f8;
 
   touch-action: pan-y;
+
+  z-index: 1;
 }
 
 
 /* =========================================================
-   GREY BACKGROUND
+   BACKGROUNDS
 ========================================================= */
 
 .ba-left-background {
@@ -128,7 +292,7 @@
 
   inset: 0;
 
-  width: 100%;
+  z-index: 1;
 
   background:
     linear-gradient(
@@ -136,21 +300,14 @@
       #fafafa 0%,
       #f1f2f4 100%
     );
-
-  z-index: 1;
 }
-
-
-/* =========================================================
-   BLUE BACKGROUND
-========================================================= */
 
 .ba-right-background {
   position: absolute;
 
   inset: 0;
 
-  width: 100%;
+  z-index: 2;
 
   background:
     linear-gradient(
@@ -158,8 +315,6 @@
       #edf8ff 0%,
       #f8fcff 100%
     );
-
-  z-index: 2;
 
   clip-path:
     polygon(
@@ -172,7 +327,7 @@
 
 
 /* =========================================================
-   MOVING LAYERS
+   MOVING CONTENT LAYERS
 ========================================================= */
 
 .ba-moving-layer {
@@ -185,11 +340,6 @@
   pointer-events: none;
 }
 
-
-/* =========================================================
-   GREY CONTENT
-========================================================= */
-
 .ba-grey-layer {
   z-index: 5;
 
@@ -201,11 +351,6 @@
       0 100%
     );
 }
-
-
-/* =========================================================
-   BLUE CONTENT
-========================================================= */
 
 .ba-blue-layer {
   z-index: 6;
@@ -244,8 +389,7 @@
 
 
 /* =========================================================
-   TRACK
-   LEFT → RIGHT
+   MOVING TRACK
 ========================================================= */
 
 .ba-track {
@@ -266,28 +410,29 @@
     infinite;
 }
 
-
-/* =========================================================
-   LEFT → RIGHT
-========================================================= */
-
 @keyframes ba-move-right {
-
   from {
     transform:
-      translate3d(-25%, 0, 0);
+      translate3d(
+        -25%,
+        0,
+        0
+      );
   }
 
   to {
     transform:
-      translate3d(0, 0, 0);
+      translate3d(
+        0,
+        0,
+        0
+      );
   }
-
 }
 
 
 /* =========================================================
-   CARD
+   CARDS
 ========================================================= */
 
 .ba-card {
@@ -305,14 +450,19 @@
 
   flex-shrink: 0;
 
-  border-radius: 14px;
-
-  background:
-    rgba(255, 255, 255, 0.97);
-
   border:
     1px solid
     rgba(15, 23, 42, 0.06);
+
+  border-radius: 14px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.97
+    );
 
   box-shadow:
     0 12px 30px
@@ -327,7 +477,7 @@
 
 
 /* =========================================================
-   GREY CARD
+   GREY SIDE
 ========================================================= */
 
 .ba-grey-layer .ba-card {
@@ -339,7 +489,7 @@
 
 
 /* =========================================================
-   BLUE CARD
+   BLUE SIDE
 ========================================================= */
 
 .ba-blue-layer .ba-card {
@@ -380,11 +530,6 @@
   font-weight: 800;
 }
 
-
-/* =========================================================
-   GREY ICON
-========================================================= */
-
 .ba-grey-layer .ba-card-icon {
   background:
     linear-gradient(
@@ -393,11 +538,6 @@
       #dfe2e5
     );
 }
-
-
-/* =========================================================
-   BLUE ICON
-========================================================= */
 
 .ba-blue-layer .ba-card-icon {
   background:
@@ -422,14 +562,14 @@
 
   top: 0;
 
-  bottom: -30px;
+  bottom: 0;
 
   width: 44px;
 
   transform:
     translateX(-50%);
 
-  z-index: 150;
+  z-index: 50;
 
   cursor: ew-resize;
 
@@ -437,135 +577,18 @@
 
   user-select: none;
 
-  display: flex;
-
-  justify-content: center;
+  pointer-events: auto;
 }
 
 
 /* =========================================================
-   CONNECTED BEFORE / AFTER BUTTON
-========================================================= */
-
-.ba-connected-control {
-  position: absolute;
-
-  top: -28px;
-
-  left: 50%;
-
-  transform:
-    translateX(-50%);
-
-  z-index: 300;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 165px;
-
-  height: 50px;
-
-  border-radius: 999px;
-
-  background: #ffffff;
-
-  border:
-    1px solid
-    rgba(15, 23, 42, 0.08);
-
-  box-shadow:
-    0 8px 24px
-    rgba(37, 99, 235, 0.14);
-
-  overflow: hidden;
-
-  cursor: ew-resize;
-}
-
-
-/* =========================================================
-   LABELS
-========================================================= */
-
-.ba-connected-label {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  height: 100%;
-
-  flex: 1;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  white-space: nowrap;
-}
-
-.ba-connected-before {
-  color: #6b7280;
-}
-
-.ba-connected-after {
-  color: #04246a;
-}
-
-
-/* =========================================================
-   CENTER ARROW
-========================================================= */
-
-.ba-connected-arrow {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  width: 34px;
-
-  height: 34px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  color: #ffffff;
-
-  background:
-    linear-gradient(
-      135deg,
-      #07102c,
-      #022570
-    );
-
-  border:
-    2px solid
-    #ffffff;
-
-  box-shadow:
-    0 4px 12px
-    rgba(37, 99, 235, 0.25);
-
-  font-size: 11px;
-}
-
-
-/* =========================================================
-   LONG DIVIDER LINE
+   DIVIDER LINE
 ========================================================= */
 
 .ba-divider-line {
   position: absolute;
 
-  top: 22px;
+  top: 0;
 
   bottom: 0;
 
@@ -587,6 +610,8 @@
   box-shadow:
     0 0 16px
     rgba(37, 99, 235, 0.4);
+
+  z-index: 1;
 }
 
 
@@ -597,22 +622,29 @@
 .ba-divider-handle {
   position: absolute;
 
-  top: 55%;
+  top: 50%;
 
   left: 50%;
 
-  width: 30px;
+  width: 36px;
 
-  height: 62px;
+  height: 64px;
 
   transform:
-    translate(-50%, -50%);
+    translate(
+      -50%,
+      -50%
+    );
 
   display: flex;
 
   align-items: center;
 
   justify-content: center;
+
+  border:
+    2px solid
+    #ffffff;
 
   border-radius: 999px;
 
@@ -625,32 +657,28 @@
       #063fb2
     );
 
-  border:
-    2px solid
-    #ffffff;
-
   box-shadow:
-    0 7px 20px
-    rgba(37, 99, 235, 0.35);
+    0 8px 22px
+    rgba(37, 99, 235, 0.4);
 
-  font-size: 13px;
+  font-size: 16px;
+
+  z-index: 2;
 
   transition:
-    transform 0.15s ease;
+    transform
+    0.15s
+    ease;
 }
 
 .ba-divider:hover
 .ba-divider-handle {
   transform:
-    translate(-50%, -50%)
+    translate(
+      -50%,
+      -50%
+    )
     scale(1.08);
-}
-
-.ba-divider:active
-.ba-divider-handle {
-  transform:
-    translate(-50%, -50%)
-    scale(0.96);
 }
 
 
@@ -661,7 +689,7 @@
 .ba-divider-dot {
   position: absolute;
 
-  bottom: 4px;
+  bottom: 8px;
 
   left: 50%;
 
@@ -685,6 +713,8 @@
     0 0 20px
     rgba(37, 99, 235, 0.45);
 
+  z-index: 2;
+
   animation:
     ba-dot-pulse
     2s
@@ -693,7 +723,6 @@
 }
 
 @keyframes ba-dot-pulse {
-
   0%,
   100% {
     transform:
@@ -706,18 +735,14 @@
       translateX(-50%)
       scale(1.15);
   }
-
 }
 
 
 /* =========================================================
-
    BOTTOM CONTENT
-
 ========================================================= */
 
 .ba-bottom {
-
   position: relative;
 
   z-index: 10;
@@ -729,34 +754,23 @@
   padding: 0 20px;
 
   text-align: center;
-
 }
 
-
 .ba-bottom h3 {
-
   margin: 0;
 
   color: #022a75;
 
   font-family:
-
     "Plus Jakarta Sans",
-
     Inter,
-
     sans-serif;
 
   font-size:
-
     clamp(
-
       30px,
-
       3.5vw,
-
       44px
-
     );
 
   line-height: 1.1;
@@ -764,17 +778,9 @@
   letter-spacing: -1.8px;
 
   font-weight: 800;
-
-  animation:
-    headingReveal 1s
-    cubic-bezier(0.16, 1, 0.3, 1)
-    both;
-
 }
 
-
 .ba-bottom p {
-
   max-width: 620px;
 
   margin: 20px auto 0;
@@ -784,115 +790,9 @@
   font-size: 15px;
 
   line-height: 1.7;
-
-  animation:
-    paragraphReveal 1s
-    cubic-bezier(0.16, 1, 0.3, 1)
-    0.25s
-    both;
-
 }
 
 
-/* =========================================================
-   UNIQUE REVEAL ANIMATION
-========================================================= */
-
-@keyframes headingReveal {
-
-  0% {
-
-    opacity: 0;
-
-    filter: blur(12px);
-
-    transform:
-      scale(0.92)
-      rotateX(18deg);
-
-  }
-
-  60% {
-
-    opacity: 1;
-
-    filter: blur(0);
-
-    transform:
-      scale(1.02)
-      rotateX(0);
-
-  }
-
-  100% {
-
-    opacity: 1;
-
-    filter: blur(0);
-
-    transform:
-      scale(1)
-      rotateX(0);
-
-  }
-
-}
-
-
-@keyframes paragraphReveal {
-
-  0% {
-
-    opacity: 0;
-
-    letter-spacing: 3px;
-
-    filter: blur(6px);
-
-  }
-
-  100% {
-
-    opacity: 1;
-
-    letter-spacing: 0;
-
-    filter: blur(0);
-
-  }
-
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-
-  .ba-bottom h3,
-
-  .ba-bottom p {
-
-    animation: none;
-
-  }
-
-}
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .ba-bottom,
-
-  .ba-bottom h3,
-
-  .ba-bottom p {
-
-    animation: none;
-
-  }
-
-}
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -905,35 +805,63 @@
       85px;
   }
 
-
   .before-after-heading {
     margin-bottom: 55px;
   }
 
-
   .before-after-heading h2 {
-    padding: 0 20px;
-
     font-size: 34px;
 
     letter-spacing: -1.5px;
   }
 
+  .ba-stage-wrapper {
+    padding-top: 56px;
+  }
+
+
+  /* BEFORE / AFTER BUTTON */
+
+  .ba-connected-control {
+    top: 8px;
+
+    width: 160px;
+
+    height: 48px;
+  }
+
+  .ba-connected-label {
+    font-size: 10px;
+  }
+
+  .ba-connected-arrow {
+    width: 34px;
+
+    height: 34px;
+
+    font-size: 14px;
+  }
+
+
+  /* STAGE */
 
   .ba-stage {
     height: 390px;
   }
 
 
+  /* ROWS */
+
   .ba-row-1 {
     top: 70px;
   }
-
 
   .ba-row-2 {
     top: 210px;
   }
 
+
+  /* TRACK */
 
   .ba-track {
     gap: 40px;
@@ -941,6 +869,8 @@
     animation-duration: 26s;
   }
 
+
+  /* CARDS */
 
   .ba-card {
     width: 285px;
@@ -954,7 +884,6 @@
     font-size: 11px;
   }
 
-
   .ba-card-icon {
     width: 23px;
 
@@ -964,53 +893,19 @@
   }
 
 
-  /* ================================================
-     MOBILE CONNECTED BUTTON
-  ================================================ */
-
-  .ba-connected-control {
-    width: 145px;
-
-    height: 46px;
-
-    top: -24px;
-  }
-
-
-  .ba-connected-label {
-    font-size: 9px;
-  }
-
-
-  .ba-connected-arrow {
-    width: 30px;
-
-    height: 30px;
-
-    font-size: 10px;
-  }
-
+  /* DIVIDER */
 
   .ba-divider {
-    top: 0;
-
-    bottom: -25px;
-
     width: 40px;
   }
 
-
-  .ba-divider-line {
-    top: 22px;
-  }
-
-
   .ba-divider-handle {
-    width: 27px;
+    width: 32px;
 
-    height: 56px;
+    height: 58px;
+
+    font-size: 14px;
   }
-
 
   .ba-divider-dot {
     width: 16px;
@@ -1019,20 +914,19 @@
   }
 
 
+  /* BOTTOM */
+
   .ba-bottom {
     margin-top: 65px;
   }
-
 
   .ba-bottom h3 {
     font-size: 29px;
   }
 
-
   .ba-bottom p {
     font-size: 13px;
   }
-
 }
 
 
@@ -1047,5 +941,4 @@
   .before-after-heading h2 span {
     animation: none;
   }
-
 }

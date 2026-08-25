@@ -36,16 +36,11 @@ function Card({ text, index }) {
   );
 }
 
-
 /* =========================================================
    TRACK
 ========================================================= */
 
 function Track({ items }) {
-  /*
-    Multiple copies create a continuous marquee.
-  */
-
   const repeatedItems = [
     ...items,
     ...items,
@@ -66,36 +61,29 @@ function Track({ items }) {
   );
 }
 
-
 /* =========================================================
    MAIN COMPONENT
 ========================================================= */
 
 export default function BeforeAfter() {
-  const stageRef = useRef(null);
-
+  const wrapperRef = useRef(null);
   const draggingRef = useRef(false);
 
   const [dividerPosition, setDividerPosition] =
     useState(50);
 
-
   /* =======================================================
-     UPDATE DIVIDER
+     UPDATE DIVIDER POSITION
   ======================================================= */
 
   const updateDivider = (clientX) => {
-    if (!stageRef.current) return;
+    if (!wrapperRef.current) return;
 
     const rect =
-      stageRef.current.getBoundingClientRect();
+      wrapperRef.current.getBoundingClientRect();
 
     let position =
       ((clientX - rect.left) / rect.width) * 100;
-
-    /*
-      Keep divider inside the stage.
-    */
 
     position = Math.max(
       5,
@@ -104,7 +92,6 @@ export default function BeforeAfter() {
 
     setDividerPosition(position);
   };
-
 
   /* =======================================================
      START DRAGGING
@@ -116,11 +103,16 @@ export default function BeforeAfter() {
     draggingRef.current = true;
 
     updateDivider(event.clientX);
+
+    if (event.currentTarget.setPointerCapture) {
+      event.currentTarget.setPointerCapture(
+        event.pointerId
+      );
+    }
   };
 
-
   /* =======================================================
-     GLOBAL DRAGGING
+     DRAGGING
   ======================================================= */
 
   useEffect(() => {
@@ -157,159 +149,132 @@ export default function BeforeAfter() {
     };
   }, []);
 
-
   return (
     <section className="before-after-section">
-
 
       {/* =================================================
           HEADING
       ================================================= */}
 
       <div className="before-after-heading">
-
         <h2>
           From scattered leads to{" "}
           <span>intelligent growth</span>
         </h2>
-
       </div>
 
-
       {/* =================================================
-          MAIN STAGE
+          OUTER WRAPPER
+
+          IMPORTANT:
+          Button is outside ba-stage so ba-stage overflow
+          cannot hide or cut the button.
       ================================================= */}
 
       <div
-        ref={stageRef}
-        className="ba-stage"
-        style={{
-          "--divider-position":
-            `${dividerPosition}%`,
-        }}
+        ref={wrapperRef}
+        className="ba-stage-wrapper"
       >
 
-
-        {/* =================================================
-            GREY BACKGROUND
-        ================================================= */}
-
-        <div className="ba-left-background" />
-
-
-        {/* =================================================
-            BLUE BACKGROUND
-        ================================================= */}
-
-        <div className="ba-right-background" />
-
-
-        {/* =================================================
-            GREY MOVING CONTENT
-        ================================================= */}
-
-        <div className="ba-moving-layer ba-grey-layer">
-
-          <div className="ba-row ba-row-1">
-            <Track items={ROWS[0]} />
-          </div>
-
-          <div className="ba-row ba-row-2">
-            <Track items={ROWS[1]} />
-          </div>
-
-        </div>
-
-
-        {/* =================================================
-            BLUE MOVING CONTENT
-        ================================================= */}
-
-        <div className="ba-moving-layer ba-blue-layer">
-
-          <div className="ba-row ba-row-1">
-            <Track items={ROWS[0]} />
-          </div>
-
-          <div className="ba-row ba-row-2">
-            <Track items={ROWS[1]} />
-          </div>
-
-        </div>
-
-
-        {/* =================================================
-            CONNECTED DRAGGABLE DIVIDER
-        ================================================= */}
+        {/* =============================================
+            BEFORE / AFTER BUTTON
+        ============================================= */}
 
         <div
-          className="ba-divider"
+          className="ba-connected-control"
           style={{
             left: `${dividerPosition}%`,
           }}
           onPointerDown={handlePointerDown}
         >
+          <div className="ba-connected-label ba-connected-before">
+            Before
+          </div>
 
+          <div className="ba-connected-arrow">
+            ↔
+          </div>
 
-          {/* =================================================
-              BEFORE / AFTER CONTROL
-          ================================================= */}
+          <div className="ba-connected-label ba-connected-after">
+            After
+          </div>
+        </div>
 
-          <div className="ba-connected-control">
+        {/* =============================================
+            MAIN STAGE
+        ============================================= */}
 
-            <div
-              className="
-                ba-connected-label
-                ba-connected-before
-              "
-            >
-              Before
+        <div
+          className="ba-stage"
+          style={{
+            "--divider-position":
+              `${dividerPosition}%`,
+          }}
+        >
+
+          {/* BACKGROUNDS */}
+
+          <div className="ba-left-background" />
+
+          <div className="ba-right-background" />
+
+          {/* ===========================================
+              GREY CONTENT
+          =========================================== */}
+
+          <div className="ba-moving-layer ba-grey-layer">
+
+            <div className="ba-row ba-row-1">
+              <Track items={ROWS[0]} />
             </div>
 
+            <div className="ba-row ba-row-2">
+              <Track items={ROWS[1]} />
+            </div>
 
-            <div className="ba-connected-arrow">
+          </div>
+
+          {/* ===========================================
+              BLUE CONTENT
+          =========================================== */}
+
+          <div className="ba-moving-layer ba-blue-layer">
+
+            <div className="ba-row ba-row-1">
+              <Track items={ROWS[0]} />
+            </div>
+
+            <div className="ba-row ba-row-2">
+              <Track items={ROWS[1]} />
+            </div>
+
+          </div>
+
+          {/* ===========================================
+              DRAGGABLE DIVIDER
+          =========================================== */}
+
+          <div
+            className="ba-divider"
+            style={{
+              left: `${dividerPosition}%`,
+            }}
+            onPointerDown={handlePointerDown}
+          >
+
+            <div className="ba-divider-line" />
+
+            <div className="ba-divider-handle">
               ↔
             </div>
 
-
-            <div
-              className="
-                ba-connected-label
-                ba-connected-after
-              "
-            >
-              After
-            </div>
+            <div className="ba-divider-dot" />
 
           </div>
-
-
-          {/* =================================================
-              LONG DIVIDER LINE
-          ================================================= */}
-
-          <div className="ba-divider-line" />
-
-
-          {/* =================================================
-              VERTICAL DRAG HANDLE
-          ================================================= */}
-
-          <div className="ba-divider-handle">
-            ↕
-          </div>
-
-
-          {/* =================================================
-              BOTTOM DOT
-          ================================================= */}
-
-          <div className="ba-divider-dot" />
 
         </div>
 
       </div>
-
 
       {/* =================================================
           BOTTOM CONTENT
