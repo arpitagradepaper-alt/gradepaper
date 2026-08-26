@@ -154,7 +154,7 @@ function TrustedByLeaders() {
           </h2>
 
           <p>
-            GradeLead connects your entire lead journey —
+            GradLead connects your entire lead journey —
             from the first interaction to the final conversion.
           </p>
         </div>

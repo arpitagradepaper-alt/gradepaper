@@ -11,42 +11,42 @@ const SHOWCASE_ITEMS = [
     label: "AI-POWERED INTELLIGENCE",
     title: "Know which leads are ready to buy",
     description:
-      "GradeLead analyzes lead behavior, engagement, and intent signals to identify the prospects that matter most. Your team always knows where to focus next.",
+      "GradLead analyzes lead behavior, engagement, and intent signals to identify the prospects that matter most. Your team always knows where to focus next.",
     points: [
       "Real-time lead intelligence",
       "AI-powered intent detection",
       "Automatic lead prioritization",
     ],
     image: dashboardImg,
-    imageAlt: "GradeLead AI-powered lead intelligence dashboard",
+    imageAlt: "GradLead AI-powered lead intelligence dashboard",
   },
   {
    
     label: "PERSONALIZED ENGAGEMENT",
     title: "Every lead gets the right message",
     description:
-      "GradeLead uses AI to understand each prospect and help your team create personalized conversations that feel relevant instead of automated.",
+      "GradLead uses AI to understand each prospect and help your team create personalized conversations that feel relevant instead of automated.",
     points: [
       "AI-generated personalized messages",
       "Context-aware conversations",
       "Faster lead response",
     ],
     image: aiChatImg,
-    imageAlt: "GradeLead AI chat and personalized engagement",
+    imageAlt: "GradLead AI chat and personalized engagement",
   },
   {
     
     label: "SMART LEAD SCORING",
     title: "Turn activity into actionable signals",
     description:
-      "From browsing behavior to engagement patterns, GradeLead turns activity into clear signals so your sales team can act before opportunities go cold.",
+      "From browsing behavior to engagement patterns, GradLead turns activity into clear signals so your sales team can act before opportunities go cold.",
     points: [
       "Dynamic lead scoring",
       "Buying-intent signals",
       "Hot, warm and cold lead identification",
     ],
     image: qualifyImg,
-    imageAlt: "GradeLead lead qualification and scoring",
+    imageAlt: "GradLead lead qualification and scoring",
   },
 ];
 
@@ -107,7 +107,7 @@ function ProductShowcase() {
           </h2>
 
           <p>
-            GradeLead combines AI intelligence, personalized engagement,
+            GradLead combines AI intelligence, personalized engagement,
             and smart lead signals into one powerful workspace.
           </p>
         </div>

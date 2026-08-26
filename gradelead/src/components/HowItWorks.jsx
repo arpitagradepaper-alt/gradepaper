@@ -35,12 +35,12 @@ function HowItWorks() {
          {/* Heading
         <div className="hiw-heading">
           <h2>
-            How <span>GradeLead</span> works
+            How <span>GradLead</span> works
           </h2>
 
           <p>
             From first touch to meaningful conversation —
-            GradeLead intelligently moves every lead forward.
+            GradLead intelligently moves every lead forward.
           </p>
         </div> */}
 

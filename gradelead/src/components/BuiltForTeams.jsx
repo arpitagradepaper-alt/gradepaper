@@ -63,7 +63,7 @@ function BuiltForTeams() {
 
           <p>
             From real estate teams to fast-growing businesses,
-            GradeLead helps every team turn more leads into
+            GradLead helps every team turn more leads into
             meaningful opportunities.
           </p>
         </div>

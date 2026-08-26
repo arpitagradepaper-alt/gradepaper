@@ -289,7 +289,7 @@ export default function BeforeAfter() {
         </h3>
 
         <p>
-          GradeLead brings your leads, AI qualification,
+          GradLead brings your leads, AI qualification,
           personalization and follow-ups together in one
           intelligent workspace.
         </p>
