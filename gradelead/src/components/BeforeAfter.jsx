@@ -1,28 +1,47 @@
 import { useEffect, useRef, useState } from "react";
 import "./BeforeAfter.css";
 
-const ROWS = [
+
+
+const BEFORE_ROWS = [
   [
-    "Leads scattered across multiple tools",
-    "Manual lead qualification",
-    "Generic outreach messages",
-    "Every lead in one intelligent workspace",
-    "AI-powered lead qualification",
-    "Contextual AI-powered personalization",
+    "Unstructured Data",
+    "Scattered Leads",
+    "Manual Qualification",
+    "Generic Outreach",
+    "Undefined Priorities",
+    "Missed Follow-ups",
   ],
   [
-    "Undefined lead priorities",
-    "Manual follow-up sequences",
-    "Limited pipeline visibility",
-    "AI-powered lead scoring",
-    "Automated multi-step follow-ups",
-    "Real-time pipeline visibility",
+    "Disconnected Tools",
+    "Slow Responses",
+    "Limited Visibility",
+    "Manual Processes",
+    "Lost Context",
+    "Unclear Pipeline",
   ],
 ];
 
-/* =========================================================
-   CARD
-========================================================= */
+const AFTER_ROWS = [
+  [
+    "Structured Data",
+    "Unified Leads",
+    "AI Qualification",
+    "Personalized Outreach",
+    "Smart Prioritization",
+    "Automated Follow-ups",
+  ],
+  [
+    "Connected Workspace",
+    "Instant Responses",
+    "Real-time Visibility",
+    "Automated Workflows",
+    "Complete Context",
+    "Clear Pipeline",
+  ],
+];
+
+
 
 function Card({ text, index }) {
   return (
@@ -36,9 +55,6 @@ function Card({ text, index }) {
   );
 }
 
-/* =========================================================
-   TRACK
-========================================================= */
 
 function Track({ items }) {
   const repeatedItems = [
@@ -61,41 +77,26 @@ function Track({ items }) {
   );
 }
 
-/* =========================================================
-   MAIN COMPONENT
-========================================================= */
+
 
 export default function BeforeAfter() {
   const wrapperRef = useRef(null);
   const draggingRef = useRef(false);
 
-  const [dividerPosition, setDividerPosition] =
-    useState(50);
-
-  /* =======================================================
-     UPDATE DIVIDER POSITION
-  ======================================================= */
+  const [dividerPosition, setDividerPosition] = useState(50);
 
   const updateDivider = (clientX) => {
     if (!wrapperRef.current) return;
 
-    const rect =
-      wrapperRef.current.getBoundingClientRect();
+    const rect = wrapperRef.current.getBoundingClientRect();
 
     let position =
       ((clientX - rect.left) / rect.width) * 100;
 
-    position = Math.max(
-      5,
-      Math.min(95, position)
-    );
+    position = Math.max(5, Math.min(95, position));
 
     setDividerPosition(position);
   };
-
-  /* =======================================================
-     START DRAGGING
-  ======================================================= */
 
   const handlePointerDown = (event) => {
     event.preventDefault();
@@ -105,15 +106,9 @@ export default function BeforeAfter() {
     updateDivider(event.clientX);
 
     if (event.currentTarget.setPointerCapture) {
-      event.currentTarget.setPointerCapture(
-        event.pointerId
-      );
+      event.currentTarget.setPointerCapture(event.pointerId);
     }
   };
-
-  /* =======================================================
-     DRAGGING
-  ======================================================= */
 
   useEffect(() => {
     const handlePointerMove = (event) => {
@@ -126,15 +121,8 @@ export default function BeforeAfter() {
       draggingRef.current = false;
     };
 
-    window.addEventListener(
-      "pointermove",
-      handlePointerMove
-    );
-
-    window.addEventListener(
-      "pointerup",
-      handlePointerUp
-    );
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
 
     return () => {
       window.removeEventListener(
@@ -152,10 +140,6 @@ export default function BeforeAfter() {
   return (
     <section className="before-after-section">
 
-      {/* =================================================
-          HEADING
-      ================================================= */}
-
       <div className="before-after-heading">
         <h2>
           From scattered leads to{" "}
@@ -163,22 +147,12 @@ export default function BeforeAfter() {
         </h2>
       </div>
 
-      {/* =================================================
-          OUTER WRAPPER
-
-          IMPORTANT:
-          Button is outside ba-stage so ba-stage overflow
-          cannot hide or cut the button.
-      ================================================= */}
-
       <div
         ref={wrapperRef}
         className="ba-stage-wrapper"
       >
 
-        {/* =============================================
-            BEFORE / AFTER BUTTON
-        ============================================= */}
+        {/* BEFORE / AFTER BUTTON */}
 
         <div
           className="ba-connected-control"
@@ -200,59 +174,49 @@ export default function BeforeAfter() {
           </div>
         </div>
 
-        {/* =============================================
-            MAIN STAGE
-        ============================================= */}
+        {/* MAIN STAGE */}
 
         <div
           className="ba-stage"
           style={{
-            "--divider-position":
-              `${dividerPosition}%`,
+            "--divider-position": `${dividerPosition}%`,
           }}
         >
 
-          {/* BACKGROUNDS */}
 
           <div className="ba-left-background" />
 
           <div className="ba-right-background" />
 
-          {/* ===========================================
-              GREY CONTENT
-          =========================================== */}
+          
 
           <div className="ba-moving-layer ba-grey-layer">
 
             <div className="ba-row ba-row-1">
-              <Track items={ROWS[0]} />
+              <Track items={BEFORE_ROWS[0]} />
             </div>
 
             <div className="ba-row ba-row-2">
-              <Track items={ROWS[1]} />
+              <Track items={BEFORE_ROWS[1]} />
             </div>
 
           </div>
 
-          {/* ===========================================
-              BLUE CONTENT
-          =========================================== */}
+          
 
           <div className="ba-moving-layer ba-blue-layer">
 
             <div className="ba-row ba-row-1">
-              <Track items={ROWS[0]} />
+              <Track items={AFTER_ROWS[0]} />
             </div>
 
             <div className="ba-row ba-row-2">
-              <Track items={ROWS[1]} />
+              <Track items={AFTER_ROWS[1]} />
             </div>
 
           </div>
 
-          {/* ===========================================
-              DRAGGABLE DIVIDER
-          =========================================== */}
+     
 
           <div
             className="ba-divider"
@@ -276,9 +240,7 @@ export default function BeforeAfter() {
 
       </div>
 
-      {/* =================================================
-          BOTTOM CONTENT
-      ================================================= */}
+      {/* BOTTOM CONTENT */}
 
       <div className="ba-bottom">
 
