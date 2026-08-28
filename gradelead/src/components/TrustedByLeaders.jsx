@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./TrustedByLeaders.css";
 
-/* ================= FEATURE IMAGES ================= */
+
 
 import captureImage from "../assets/features/captures.png";
 import qualifyImage from "../assets/features/qualifys.png";
@@ -10,7 +10,7 @@ import engageImage from "../assets/features/engages.png";
 import followupImage from "../assets/features/Followup.png";
 import convertImage from "../assets/features/coverts.png";
 
-/* ================= CARDS DATA ================= */
+
 
 const CARDS = [
   {
@@ -86,7 +86,7 @@ const CARDS = [
   },
 ];
 
-/* ================= COMPONENT ================= */
+
 
 function TrustedByLeaders() {
   const [activeCard, setActiveCard] = useState(0);
@@ -117,7 +117,7 @@ function TrustedByLeaders() {
     setActiveCard(index);
   };
 
-  /* ================= AUTO SLIDER ================= */
+  
 
   useEffect(() => {
     const sliderInterval = setInterval(() => {
@@ -141,7 +141,7 @@ function TrustedByLeaders() {
     <section className="leaders-section">
       <div className="leaders-container">
 
-        {/* ================= SECTION HEADING ================= */}
+        
 
         <div className="leaders-heading">
           <span className="leaders-eyebrow">
@@ -159,7 +159,7 @@ function TrustedByLeaders() {
           </p>
         </div>
 
-        {/* ================= MAIN SLIDER ================= */}
+         
 
         <div className="leaders-slider">
 
@@ -174,14 +174,13 @@ function TrustedByLeaders() {
             ←
           </button>
 
-          {/* MAIN CARD */}
 
           <article
             key={card.number}
             className={`featured-leader-card ${direction}`}
           >
 
-            {/* ================= LEFT CONTENT ================= */}
+            
 
             <div className="featured-content">
 
@@ -197,7 +196,7 @@ function TrustedByLeaders() {
 
               </div>
 
-              {/* MAIN TWO-COLOR HEADING */}
+              
 
               <h3 className="feature-main-heading">
                 <span className="heading-dark">
@@ -209,13 +208,13 @@ function TrustedByLeaders() {
                 </span>
               </h3>
 
-              {/* LONG FEATURE SUBHEADING */}
+            
 
               <p className="feature-subheading">
                 {card.subheading}
               </p>
 
-              {/* SHORT DESCRIPTION */}
+             
 
               <p className="feature-description">
                 {card.text}
@@ -225,7 +224,7 @@ function TrustedByLeaders() {
 
             </div>
 
-            {/* ================= RIGHT IMAGE ================= */}
+            
 
             <div className="featured-visual">
 
@@ -241,7 +240,6 @@ function TrustedByLeaders() {
 
           </article>
 
-          {/* NEXT BUTTON */}
 
           <button
             type="button"
@@ -254,7 +252,7 @@ function TrustedByLeaders() {
 
         </div>
 
-        {/* ================= BOTTOM MESSAGE ================= */}
+        
 
         <div
           key={`message-${card.number}`}
@@ -269,7 +267,7 @@ function TrustedByLeaders() {
           <span className="message-line message-line-right" />
         </div>
 
-        {/* ================= DOTS ================= */}
+      
 
         <div className="slider-dots">
 

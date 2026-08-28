@@ -1,6 +1,4 @@
-/* =========================================================
-   GRADELEAD — BUILT FOR MODERN TEAMS
-========================================================= */
+
 
 .built-section {
   position: relative;
@@ -14,12 +12,12 @@
   background:
     radial-gradient(
       circle at 15% 50%,
-      rgba(37, 99, 235, 0.07),
+      rgba(112, 195, 144, 0.10),
       transparent 30%
     ),
     radial-gradient(
       circle at 85% 30%,
-      rgba(6, 182, 212, 0.06),
+      rgba(91, 124, 143, 0.08),
       transparent 30%
     ),
     #ffffff;
@@ -35,9 +33,7 @@
   z-index: 2;
 }
 
-/* =========================================================
-   GLOW
-========================================================= */
+
 
 .built-glow {
   position: absolute;
@@ -58,7 +54,7 @@
   width: 350px;
   height: 350px;
 
-  background: rgba(37, 99, 235, 0.10);
+  background: rgba(112, 195, 144, 0.12);
 }
 
 .built-glow-two {
@@ -68,12 +64,10 @@
   width: 360px;
   height: 360px;
 
-  background: rgba(6, 182, 212, 0.08);
+  background: rgba(91, 124, 143, 0.10);
 }
 
-/* =========================================================
-   HEADING
-========================================================= */
+
 
 .built-heading {
   position: relative;
@@ -90,7 +84,7 @@
 
   margin-bottom: 18px;
 
-  color: #032a7c;
+  color: #70c390;
 
   font-family:
     "Plus Jakarta Sans",
@@ -107,7 +101,7 @@
 .built-heading h2 {
   margin: 0;
 
-  color: #02215a;
+  color: #1c2143;
 
   font-family:
     "Plus Jakarta Sans",
@@ -129,9 +123,10 @@
   background:
     linear-gradient(
       90deg,
-      #071226,
-      #2563eb,
-      #06b6d4
+      #1c2143,
+      #42586f,
+      #70c390,
+      #7de19a
     );
 
   -webkit-background-clip: text;
@@ -145,7 +140,7 @@
 
   margin: 20px auto 0;
 
-  color: #64748b;
+  color: #5b7c8f;
 
   font-family: "Inter", sans-serif;
 
@@ -154,9 +149,7 @@
   line-height: 1.75;
 }
 
-/* =========================================================
-   GRID
-========================================================= */
+
 
 .built-grid {
   display: grid;
@@ -167,9 +160,7 @@
   gap: 18px;
 }
 
-/* =========================================================
-   CARD
-========================================================= */
+
 
 .built-card {
   position: relative;
@@ -190,15 +181,15 @@
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.98),
-      rgba(247, 250, 255, 0.96)
+      rgba(244, 250, 246, 0.96)
     );
 
   border: 1px solid
-    rgba(3, 41, 131, 0.07);
+    rgba(112, 195, 144, 0.14);
 
   box-shadow:
     0 8px 25px
-      rgba(15, 23, 42, 0.035);
+      rgba(28, 33, 67, 0.035);
 
   overflow: hidden;
 
@@ -216,9 +207,7 @@
     box-shadow 0.35s ease;
 }
 
-/* =========================================================
-   CARD HOVER
-========================================================= */
+
 
 .built-card::before {
   content: "";
@@ -234,8 +223,9 @@
   background:
     linear-gradient(
       180deg,
-      #2563eb,
-      #06b6d4
+      #70c390,
+      #7de19a,
+      #5b7c8f
     );
 
   transform: scaleY(0);
@@ -251,20 +241,18 @@
     translateY(-7px);
 
   border-color:
-    rgba(1, 7, 21, 0.2);
+    rgba(112, 195, 144, 0.38);
 
   box-shadow:
     0 20px 45px
-      rgba(37, 99, 235, 0.11);
+      rgba(91, 124, 143, 0.14);
 }
 
 .built-card:hover::before {
   transform: scaleY(1);
 }
 
-/* =========================================================
-   ICON
-========================================================= */
+
 
 .built-icon {
   flex-shrink: 0;
@@ -279,17 +267,17 @@
 
   border-radius: 15px;
 
-  color: #64748b;
+  color: #5b7c8f;
 
   background:
     linear-gradient(
       135deg,
-      #f1f5f9,
-      #eef5ff
+      #f3f7f5,
+      #e8f7ed
     );
 
   border: 1px solid
-    rgba(37, 99, 235, 0.08);
+    rgba(112, 195, 144, 0.12);
 
   transition:
     color 0.35s ease,
@@ -298,13 +286,13 @@
 }
 
 .built-card:hover .built-icon {
-  color: #2563eb;
+  color: #1c2143;
 
   background:
     linear-gradient(
       135deg,
-      #eff6ff,
-      #ecfeff
+      #e8f7ed,
+      #dff6e7
     );
 
   transform:
@@ -312,9 +300,7 @@
     rotate(-3deg);
 }
 
-/* =========================================================
-   CONTENT
-========================================================= */
+
 
 .built-card-content {
   min-width: 0;
@@ -323,7 +309,7 @@
 .built-card-content h3 {
   margin: 0;
 
-  color: #042c76;
+  color: #1c2143;
 
   font-family:
     "Plus Jakarta Sans",
@@ -340,7 +326,7 @@
 .built-card-content p {
   margin: 7px 0 0;
 
-  color: #718096;
+  color: #5b7c8f;
 
   font-family: "Inter", sans-serif;
 
@@ -349,9 +335,7 @@
   line-height: 1.55;
 }
 
-/* =========================================================
-   ARROW
-========================================================= */
+
 
 .built-arrow {
   position: absolute;
@@ -359,7 +343,7 @@
   right: 20px;
   top: 20px;
 
-  color: #cbd5e1;
+  color: #aab8bf;
 
   font-size: 18px;
 
@@ -369,15 +353,13 @@
 }
 
 .built-card:hover .built-arrow {
-  color: #2563eb;
+  color: #70c390;
 
   transform:
     translate(3px, -3px);
 }
 
-/* =========================================================
-   FLOAT
-========================================================= */
+
 
 @keyframes builtCardFloat {
   0%,
@@ -390,9 +372,7 @@
   }
 }
 
-/* =========================================================
-   BOTTOM STATEMENT
-========================================================= */
+
 
 .built-bottom {
   display: flex;
@@ -409,7 +389,7 @@
 .built-bottom p {
   margin: 0;
 
-  color: #94a3b8;
+  color: #7b919e;
 
   font-family: "Inter", sans-serif;
 
@@ -419,7 +399,7 @@
 }
 
 .built-bottom strong {
-  color: #2563eb;
+  color: #70c390;
 
   font-weight: 700;
 }
@@ -433,7 +413,7 @@
     linear-gradient(
       90deg,
       transparent,
-      #dbeafe
+      #c9ead5
     );
 }
 
@@ -441,14 +421,12 @@
   background:
     linear-gradient(
       90deg,
-      #dbeafe,
+      #c9ead5,
       transparent
     );
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
+
 
 @media (max-width: 900px) {
   .built-grid {
@@ -457,9 +435,7 @@
   }
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+
 
 @media (max-width: 650px) {
   .built-section {
@@ -514,24 +490,22 @@
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+
 
 @media (prefers-reduced-motion: reduce) {
   .built-card {
     animation: none;
   }
 }
-/* =========================================================
-   PREMIUM CARD LIGHT SWEEP
-========================================================= */
+
+
 
 .built-card {
   overflow: hidden;
 }
 
 /* Light moving across the card */
+
 .built-card::after {
   content: "";
 
@@ -546,7 +520,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.65),
+    rgba(125, 225, 154, 0.32),
+    rgba(255, 255, 255, 0.70),
+    rgba(125, 225, 154, 0.22),
     transparent
   );
 

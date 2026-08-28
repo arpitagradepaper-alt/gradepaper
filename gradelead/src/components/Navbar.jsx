@@ -3,9 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { createPortal } from "react-dom";
 import "./Navbar.css";
 
-/* =========================================================
-   MENU DATA
-========================================================= */
+import gradleadLogo from "../assets/gradlead-logo.png";
 
 const MENU_DATA = {
   features: {
@@ -349,10 +347,6 @@ const MENU_DATA = {
   },
 };
 
-/* =========================================================
-   NAV ITEMS
-========================================================= */
-
 const NAV_ITEMS = [
   {
     key: "features",
@@ -378,10 +372,6 @@ const NAV_ITEMS = [
 
 const MOBILE_BREAKPOINT = 1200;
 
-/* =========================================================
-   NAVBAR COMPONENT
-========================================================= */
-
 export default function Navbar() {
   const location = useLocation();
 
@@ -394,14 +384,9 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileActiveMenu, setMobileActiveMenu] = useState(null);
 
-  /* =======================================================
-     RESPONSIVE DETECTION
-  ======================================================= */
-
   useEffect(() => {
     const handleResize = () => {
-      const mobile =
-        window.innerWidth <= MOBILE_BREAKPOINT;
+      const mobile = window.innerWidth <= MOBILE_BREAKPOINT;
 
       setIsMobile(mobile);
 
@@ -420,26 +405,15 @@ export default function Navbar() {
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener(
-        "resize",
-        handleResize
-      );
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  /* =======================================================
-     CLOSE ON ROUTE CHANGE
-  ======================================================= */
 
   useEffect(() => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
     setMobileActiveMenu(null);
   }, [location.pathname]);
-
-  /* =======================================================
-     BODY SCROLL LOCK
-  ======================================================= */
 
   useEffect(() => {
     if (isMobile && mobileMenuOpen) {
@@ -453,10 +427,6 @@ export default function Navbar() {
     };
   }, [isMobile, mobileMenuOpen]);
 
-  /* =======================================================
-     ESCAPE KEY
-  ======================================================= */
-
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -469,16 +439,9 @@ export default function Navbar() {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener(
-        "keydown",
-        handleKeyDown
-      );
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-
-  /* =======================================================
-     FUNCTIONS
-  ======================================================= */
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((previous) => !previous);
@@ -496,10 +459,6 @@ export default function Navbar() {
     );
   };
 
-  /* =======================================================
-     MOBILE PORTAL
-  ======================================================= */
-
   const mobileNavigation =
     isMobile && mobileMenuOpen
       ? createPortal(
@@ -510,14 +469,12 @@ export default function Navbar() {
           >
             <div className="mobile-navigation">
               <div className="mobile-navigation-inner">
-
                 {NAV_ITEMS.map((menu) => (
                   <div
                     className="mobile-menu-section"
                     key={menu.key}
                   >
                     <div className="mobile-menu-row">
-
                       <button
                         type="button"
                         className="mobile-menu-title"
@@ -546,12 +503,10 @@ export default function Navbar() {
                           ⌄
                         </span>
                       </button>
-
                     </div>
 
                     {mobileActiveMenu === menu.key && (
                       <div className="mobile-dropdown">
-
                         {MENU_DATA[menu.key].items.map(
                           (item, index) => (
                             <div
@@ -559,55 +514,39 @@ export default function Navbar() {
                               key={`${menu.key}-${index}`}
                             >
                               <div className="mobile-card-top">
-
                                 <div className="mobile-card-icon">
                                   {item.icon}
                                 </div>
 
                                 <div className="mobile-card-content">
+                                  <h3>{item.title}</h3>
 
-                                  <h3>
-                                    {item.title}
-                                  </h3>
-
-                                  <p>
-                                    {item.description}
-                                  </p>
+                                  <p>{item.description}</p>
 
                                   <div className="mobile-card-links">
-
                                     {item.links.map(
                                       (link, linkIndex) => (
                                         <Link
                                           key={`${menu.key}-${index}-${linkIndex}`}
                                           to={link.to}
-                                          onClick={
-                                            closeMobileMenu
-                                          }
+                                          onClick={closeMobileMenu}
                                         >
                                           <span>
                                             {link.label}
                                           </span>
 
-                                          <span>
-                                            →
-                                          </span>
+                                          <span>→</span>
                                         </Link>
                                       )
                                     )}
-
                                   </div>
-
                                 </div>
-
                               </div>
                             </div>
                           )
                         )}
-
                       </div>
                     )}
-
                   </div>
                 ))}
 
@@ -619,17 +558,12 @@ export default function Navbar() {
                   <span>Get Started</span>
                   <span>→</span>
                 </Link>
-
               </div>
             </div>
           </div>,
           document.body
         )
       : null;
-
-  /* =======================================================
-     RENDER
-  ======================================================= */
 
   return (
     <>
@@ -644,22 +578,22 @@ export default function Navbar() {
         <div className="navbar-container">
 
           {/* LOGO */}
-
           <Link
             to="/"
             className="navbar-logo"
             onClick={closeMobileMenu}
           >
             <span className="logo-icon">
-              G
+              <img
+                src={gradleadLogo}
+                alt="GradLead AI Logo"
+              />
             </span>
 
             <span className="logo-text">
-              Grad<span>Lead</span>
+              Grad<span>Lead AI</span>
             </span>
           </Link>
-
-          {/* DESKTOP NAVIGATION */}
 
           {!isMobile && (
             <nav
@@ -682,9 +616,7 @@ export default function Navbar() {
                         : "nav-link"
                     }
                   >
-                    <span>
-                      {item.label}
-                    </span>
+                    <span>{item.label}</span>
 
                     <span className="nav-arrow">
                       {activeMenu === item.key
@@ -697,8 +629,6 @@ export default function Navbar() {
             </nav>
           )}
 
-          {/* DESKTOP GET STARTED */}
-
           {!isMobile && (
             <div className="navbar-actions">
               <Link
@@ -710,9 +640,6 @@ export default function Navbar() {
               </Link>
             </div>
           )}
-
-          {/* MOBILE HAMBURGER
-              IMPORTANT: THIS IS INSIDE navbar-container */}
 
           {isMobile && (
             <button
@@ -736,10 +663,7 @@ export default function Navbar() {
               <span />
             </button>
           )}
-
         </div>
-
-        {/* DESKTOP MEGA MENU */}
 
         {!isMobile && activeMenu && (
           <div
@@ -749,7 +673,6 @@ export default function Navbar() {
             }
           >
             <div className="mega-menu-container">
-
               {MENU_DATA[activeMenu].items.map(
                 (item, index) => (
                   <div
@@ -760,16 +683,11 @@ export default function Navbar() {
                       {item.icon}
                     </div>
 
-                    <h3>
-                      {item.title}
-                    </h3>
+                    <h3>{item.title}</h3>
 
-                    <p>
-                      {item.description}
-                    </p>
+                    <p>{item.description}</p>
 
                     <div className="mega-links">
-
                       {item.links.map(
                         (link, linkIndex) => (
                           <Link
@@ -780,19 +698,14 @@ export default function Navbar() {
                           </Link>
                         )
                       )}
-
                     </div>
                   </div>
                 )
               )}
-
             </div>
           </div>
         )}
-
       </header>
-
-      {/* MOBILE MENU */}
 
       {mobileNavigation}
     </>

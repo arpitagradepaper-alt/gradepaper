@@ -32,19 +32,7 @@ function HowItWorks() {
     <section className="hiw-section">
       <div className="hiw-container">
 
-         {/* Heading
-        <div className="hiw-heading">
-          <h2>
-            How <span>GradLead</span> works
-          </h2>
-
-          <p>
-            From first touch to meaningful conversation —
-            GradLead intelligently moves every lead forward.
-          </p>
-        </div> */}
-
-        {/* STACKED FLOW */}
+        
         <div className="hiw-stack">
 
           {/* Glow */}

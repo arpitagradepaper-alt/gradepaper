@@ -1,17 +1,25 @@
-/* =========================================================
-   BLOG DETAILS
-========================================================= */
+
 
 .blog-details {
   width: 100%;
   overflow: hidden;
-  background: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(29, 78, 216, 0.08),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #f7f8f5 0%,
+      #ffffff 30%,
+      #f7f8f5 100%
+    );
 }
 
 
-/* =========================================================
-   GLOBAL ANIMATIONS
-========================================================= */
+
 
 @keyframes fadeUp {
   from {
@@ -66,9 +74,7 @@
 }
 
 
-/* =========================================================
-   BLOG HERO
-========================================================= */
+
 
 .blog-hero {
   width: min(1180px, 92%);
@@ -91,9 +97,7 @@
 }
 
 
-/* =========================================================
-   HERO CONTENT
-========================================================= */
+
 
 .blog-hero-content {
   max-width: 760px;
@@ -117,7 +121,7 @@
 
   margin-bottom: 20px;
 
-  color: #1d4ed8;
+  color: #78b694;
 
   background:
     rgba(
@@ -133,7 +137,7 @@
       29,
       78,
       216,
-      0.12
+      0.14
     );
 
   border-radius: 100px;
@@ -155,7 +159,7 @@
 .blog-hero h1 {
   margin: 0;
 
-  color: #07152f;
+  color: #010918;
 
   font-family:
     "Plus Jakarta Sans",
@@ -192,7 +196,7 @@
     0
     0;
 
-  color: #64748b;
+  color: #011108;
 
   font-size: 16px;
 
@@ -216,7 +220,7 @@
 
   margin-top: 24px;
 
-  color: #475569;
+  color: #78b694;
 
   font-size: 13px;
 
@@ -232,15 +236,13 @@
 
 
 .blog-clock {
-  color: #1d4ed8;
+  color: #78b694;
 
   font-size: 17px;
 }
 
 
-/* =========================================================
-   HERO IMAGE
-========================================================= */
+
 
 .blog-hero-image {
   position: relative;
@@ -265,9 +267,9 @@
 .blog-image-glow {
   position: absolute;
 
-  width: 260px;
+  width: 280px;
 
-  height: 260px;
+  height: 280px;
 
   border-radius: 50%;
 
@@ -278,10 +280,17 @@
         29,
         78,
         216,
-        0.18
+        0.22
       ),
+      rgba(
+        16,
+        34,
+        75,
+        0.07
+      )
+      55%,
       transparent
-      70%
+      75%
     );
 
   filter:
@@ -320,10 +329,10 @@
       25px
       45px
       rgba(
-        29,
-        78,
-        216,
-        0.14
+        7,
+        21,
+        47,
+        0.18
       )
     );
 }
@@ -367,9 +376,7 @@
 }
 
 
-/* =========================================================
-   MAIN CONTENT LAYOUT
-========================================================= */
+
 
 .blog-content-wrapper {
   width: min(1180px, 92%);
@@ -393,9 +400,7 @@
 }
 
 
-/* =========================================================
-   TABLE OF CONTENT
-========================================================= */
+
 
 .blog-toc {
   position: sticky;
@@ -407,17 +412,17 @@
   background:
     linear-gradient(
       145deg,
-      #f8fbff,
-      #ffffff
+      #ffffff,
+      #f4f7fc
     );
 
   border:
     1px solid
     rgba(
-      148,
-      163,
-      184,
-      0.18
+      29,
+      78,
+      216,
+      0.1
     );
 
   border-radius: 18px;
@@ -427,10 +432,10 @@
     14px
     35px
     rgba(
-      15,
-      23,
-      42,
-      0.04
+      7,
+      21,
+      47,
+      0.06
     );
 
   animation:
@@ -489,10 +494,10 @@
   border-bottom:
     1px solid
     rgba(
-      148,
-      163,
-      184,
-      0.1
+      29,
+      78,
+      216,
+      0.08
     );
 
   transition:
@@ -516,18 +521,18 @@
 .toc-links a span {
   flex-shrink: 0;
 
-  color: #1d4ed8;
+  color: #78b694;
 
   font-size: 10px;
 
   font-weight: 800;
 
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 
 .toc-links a:hover {
-  color: #1d4ed8;
+  color: #78b694;
 
   padding-left: 5px;
 
@@ -536,9 +541,7 @@
 }
 
 
-/* =========================================================
-   BLOG ARTICLE
-========================================================= */
+
 
 .blog-article {
   min-width: 0;
@@ -617,9 +620,7 @@
 }
 
 
-/* =========================================================
-   FAQ
-========================================================= */
+
 
 .blog-faq-section {
   scroll-margin-top: 120px;
@@ -638,10 +639,10 @@
   border-top:
     1px solid
     rgba(
-      148,
-      163,
-      184,
-      0.18
+      29,
+      78,
+      216,
+      0.12
     );
 }
 
@@ -654,10 +655,10 @@
   border-bottom:
     1px solid
     rgba(
-      148,
-      163,
-      184,
-      0.18
+      29,
+      78,
+      216,
+      0.12
     );
 
   transition:
@@ -710,9 +711,7 @@
 }
 
 
-/* =========================================================
-   END CTA
-========================================================= */
+
 
 .blog-end-cta {
   margin-top: 100px;
@@ -731,7 +730,8 @@
     linear-gradient(
       135deg,
       #07152f,
-      #10224b
+      #10224b 55%,
+      #33e598 130%
     );
 
   box-shadow:
@@ -739,10 +739,10 @@
     25px
     55px
     rgba(
-      16,
-      34,
-      75,
-      0.2
+      7,
+      21,
+      47,
+      0.22
     );
 
   animation:
@@ -758,7 +758,7 @@
 
   margin-bottom: 15px;
 
-  color: #93c5fd;
+  color: #5de2ac;
 
   font-size: 10px;
 
@@ -810,7 +810,7 @@
       255,
       255,
       255,
-      0.7
+      0.72
     );
 
   font-size: 15px;
@@ -834,7 +834,7 @@
 
   text-decoration: none;
 
-  background: white;
+  background: #ffffff;
 
   border-radius: 10px;
 
@@ -885,9 +885,7 @@
 }
 
 
-/* =========================================================
-   BACK TO BLOGS
-========================================================= */
+
 
 .blog-back {
   margin-top: 55px;
@@ -903,7 +901,7 @@
 
   gap: 9px;
 
-  color: #1d4ed8;
+  color: #2ddcaa;
 
   text-decoration: none;
 
@@ -926,12 +924,12 @@
 
   transform:
     translateX(-3px);
+
+  color: #07152f;
 }
 
 
-/* =========================================================
-   BLOG NOT FOUND
-========================================================= */
+
 
 .blog-not-found {
   min-height: 70vh;
@@ -942,6 +940,13 @@
     100px;
 
   text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(29, 78, 216, 0.08),
+      transparent 35%
+    );
 
   animation:
     fadeUp
@@ -990,7 +995,12 @@
 
   text-decoration: none;
 
-  background: #1d4ed8;
+  background:
+    linear-gradient(
+      135deg,
+      #07152f,
+      #51dea3
+    );
 
   border-radius: 10px;
 
@@ -1020,14 +1030,12 @@
       29,
       78,
       216,
-      0.25
+      0.28
     );
 }
 
 
-/* =========================================================
-   TABLET
-========================================================= */
+
 
 @media (max-width: 1000px) {
 
@@ -1056,9 +1064,7 @@
 }
 
 
-/* =========================================================
-   MOBILE / TABLET
-========================================================= */
+
 
 @media (max-width: 850px) {
 
@@ -1114,9 +1120,7 @@
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
+
 
 @media (max-width: 600px) {
 
@@ -1206,9 +1210,7 @@
 }
 
 
-/* =========================================================
-   REDUCE ANIMATION FOR ACCESSIBILITY
-========================================================= */
+
 
 @media (prefers-reduced-motion: reduce) {
 

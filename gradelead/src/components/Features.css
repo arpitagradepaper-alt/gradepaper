@@ -1,7 +1,4 @@
-/* =========================================================
-   GRADLEAD FEATURES
-   Auto-changing tabbed funnel section
-========================================================= */
+
 
 .features {
   position: relative;
@@ -10,8 +7,8 @@
   background:
     linear-gradient(
       180deg,
-      #f8fafc 0%,
-      #eef3f8 100%
+      #f9fcfa 0%,
+      #f0f7f2 100%
     );
 }
 
@@ -20,14 +17,12 @@
   margin: 0 auto;
 }
 
-/* =========================================================
-   HEADING
-========================================================= */
+
 
 .features-heading {
   margin: 0 0 48px;
   text-align: center;
-  color: #0A192F;
+  color: #1c2143;
 
   font-family: "Plus Jakarta Sans", "Inter", sans-serif;
   font-size: clamp(28px, 3.4vw, 42px);
@@ -36,9 +31,7 @@
   font-weight: 800;
 }
 
-/* =========================================================
-   TABS
-========================================================= */
+
 
 .features-tabs {
   display: flex;
@@ -51,7 +44,7 @@
 .features-tab {
   padding: 12px 22px;
 
-  border: 1px solid rgba(10, 25, 47, 0.10);
+  border: 1px solid rgba(28, 33, 67, 0.10);
   border-radius: 999px;
 
   background: #ffffff;
@@ -71,8 +64,8 @@
 }
 
 .features-tab:hover {
-  color: #1E3A8A;
-  border-color: rgba(30, 58, 138, 0.30);
+  color: #70c390;
+  border-color: rgba(112, 195, 144, 0.50);
   transform: translateY(-2px);
 }
 
@@ -82,20 +75,18 @@
 
   background: linear-gradient(
     135deg,
-    #071A33 0%,
-    #0A192F 30%,
-    #1E3A8A 70%,
-    #4F6FAF 100%
+    #1c2143 0%,
+    #293451 30%,
+    #42586f 70%,
+    #70c390 100%
   );
 
   box-shadow:
-    0 10px 25px rgba(10, 25, 47, 0.22),
+    0 10px 25px rgba(28, 33, 67, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.16);
 }
 
-/* =========================================================
-   PANEL
-========================================================= */
+
 
 .features-panel {
   display: grid;
@@ -110,23 +101,21 @@
 
   border-radius: 24px;
 
-  border: 1px solid rgba(10, 25, 47, 0.08);
+  border: 1px solid rgba(28, 33, 67, 0.08);
 
   background:
     linear-gradient(
       135deg,
       #ffffff 0%,
-      #f5f7fb 50%,
-      #edf2f8 100%
+      #f4f8f5 50%,
+      #eaf2ed 100%
     );
 
   box-shadow:
-    0 30px 70px rgba(10, 25, 47, 0.08);
+    0 30px 70px rgba(28, 33, 67, 0.08);
 }
 
-/* =========================================================
-   LEFT CONTENT
-========================================================= */
+
 
 .features-copy {
   animation: featureContentIn 0.6s ease both;
@@ -137,7 +126,7 @@
 
   margin-bottom: 14px;
 
-  color: #1E3A8A;
+  color: #70c390;
 
   font-family: "Inter", sans-serif;
   font-size: 12px;
@@ -146,9 +135,7 @@
   letter-spacing: 1.5px;
 }
 
-/* =========================================================
-   ICON
-========================================================= */
+
 
 .features-icon-badge {
   width: 40px;
@@ -162,14 +149,12 @@
   height: 100%;
 }
 
-/* =========================================================
-   TITLE
-========================================================= */
+
 
 .features-copy h3 {
   margin: 0 0 14px;
 
-  color: #033278;
+  color: #1c2143;
 
   font-family:
     "Plus Jakarta Sans",
@@ -185,9 +170,7 @@
   line-height: 1.2;
 }
 
-/* =========================================================
-   DESCRIPTION
-========================================================= */
+
 
 .features-copy p {
   margin: 0 0 26px;
@@ -203,9 +186,7 @@
   line-height: 1.65;
 }
 
-/* =========================================================
-   POINTS
-========================================================= */
+
 
 .features-points {
   list-style: none;
@@ -227,7 +208,7 @@
 
   gap: 12px;
 
-  color: #1c2b42;
+  color: #1c2143;
 
   font-family: "Inter", sans-serif;
 
@@ -252,20 +233,18 @@
   background:
     linear-gradient(
       135deg,
-      #eef3fb,
-      #e3ebf7
+      #eaf8ef,
+      #d9f0e1
     );
 
-  color: #1E3A8A;
+  color: #1c2143;
 
   font-size: 11px;
 
   font-weight: 700;
 }
 
-/* =========================================================
-   IMAGE AREA
-========================================================= */
+
 
 .features-visual {
   display: flex;
@@ -280,15 +259,13 @@
   background:
     radial-gradient(
       circle at 50% 45%,
-      rgba(30, 58, 138, 0.16),
-      rgba(79, 111, 175, 0.08) 35%,
+      rgba(112, 195, 144, 0.22),
+      rgba(66, 88, 111, 0.10) 35%,
       transparent 70%
     );
 }
 
-/* =========================================================
-   SCREENSHOT
-========================================================= */
+
 
 .features-screenshot {
   width: 100%;
@@ -300,7 +277,7 @@
   display: block;
 
   box-shadow:
-    0 20px 40px rgba(10, 25, 47, 0.22);
+    0 20px 40px rgba(28, 33, 67, 0.22);
 
   /* Floating animation */
   animation:
@@ -316,12 +293,10 @@
 
 .features-screenshot:hover {
   box-shadow:
-    0 30px 55px rgba(30, 58, 138, 0.24);
+    0 30px 55px rgba(112, 195, 144, 0.24);
 }
 
-/* =========================================================
-   FLOATING IMAGE ANIMATION
-========================================================= */
+
 
 @keyframes floatingImage {
   0% {
@@ -337,9 +312,7 @@
   }
 }
 
-/* =========================================================
-   CONTENT CHANGE ANIMATION
-========================================================= */
+
 
 @keyframes featureContentIn {
   from {
@@ -353,9 +326,7 @@
   }
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
+
 
 @media (max-width: 900px) {
 
@@ -391,9 +362,7 @@
   }
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+
 
 @media (max-width: 560px) {
 
@@ -442,9 +411,7 @@
   }
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+
 
 @media (prefers-reduced-motion: reduce) {
 

@@ -1,7 +1,12 @@
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
 .hero {
   position: relative;
   width: 100%;
   overflow: hidden;
+
   padding: 96px 0 0;
 
   display: flex;
@@ -11,21 +16,22 @@
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(65, 105, 175, 0.18),
+      rgba(112, 195, 144, 0.20),
       transparent 45%
     ),
     radial-gradient(
       circle at 85% 35%,
-      rgba(30, 58, 138, 0.12),
+      rgba(66, 88, 111, 0.10),
       transparent 35%
     ),
     linear-gradient(
       180deg,
-      #f7f9fc 0%,
-      #eef3f9 55%,
-      #f8fafc 100%
+      #f9fcfa 0%,
+      #f0f7f2 55%,
+      #f8faf9 100%
     );
 }
+
 
 /* =========================================================
    BACKGROUND GRID
@@ -39,12 +45,12 @@
 
   background-image:
     linear-gradient(
-      rgba(10, 25, 47, 0.045) 1px,
+      rgba(28, 33, 67, 0.045) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(10, 25, 47, 0.045) 1px,
+      rgba(28, 33, 67, 0.045) 1px,
       transparent 1px
     );
 
@@ -56,6 +62,7 @@
     transparent 60%
   );
 }
+
 
 /* =========================================================
    BACKGROUND GLOWS
@@ -69,25 +76,30 @@
   filter: blur(100px);
 }
 
+
 .hero-glow-one {
   width: 620px;
   height: 620px;
+
   top: -180px;
   left: 50%;
 
   transform: translateX(-50%);
 
-  background: rgba(30, 58, 138, 0.16);
+  background: rgba(112, 195, 144, 0.18);
 }
+
 
 .hero-glow-two {
   width: 420px;
   height: 420px;
+
   right: -140px;
   top: 320px;
 
-  background: rgba(59, 92, 153, 0.12);
+  background: rgba(66, 88, 111, 0.12);
 }
+
 
 /* =========================================================
    CONTAINER
@@ -106,6 +118,7 @@
   text-align: center;
 }
 
+
 /* =========================================================
    BADGE
 ========================================================= */
@@ -113,6 +126,7 @@
 .hero-badge {
   display: inline-flex;
   align-items: center;
+
   gap: 9px;
 
   padding: 9px 15px;
@@ -120,14 +134,15 @@
 
   border-radius: 999px;
 
-  color: #0a192f;
+  color: #1c2143;
 
   background: rgba(255, 255, 255, 0.88);
 
-  border: 1px solid rgba(30, 58, 138, 0.2);
+  border: 1px solid rgba(112, 195, 144, 0.32);
 
   box-shadow:
-    0 8px 25px rgba(10, 25, 47, 0.07);
+    0 8px 25px
+    rgba(28, 33, 67, 0.07);
 
   backdrop-filter: blur(12px);
 
@@ -136,6 +151,7 @@
   font-weight: 700;
   letter-spacing: 1px;
 }
+
 
 .badge-sparkle {
   display: flex;
@@ -151,16 +167,18 @@
 
   background: linear-gradient(
     135deg,
-    #0a192f 0%,
-    #1e3a8a 45%,
-    #4f6faf 100%
+    #1c2143 0%,
+    #42586f 45%,
+    #70c390 100%
   );
 
   box-shadow:
-    0 4px 12px rgba(30, 58, 138, 0.28);
+    0 4px 12px
+    rgba(112, 195, 144, 0.28);
 
   font-size: 11px;
 }
+
 
 /* =========================================================
    HEADING
@@ -169,7 +187,7 @@
 .hero h1 {
   margin: 0;
 
-  color: #0a192f;
+  color: #1c2143;
 
   font-family:
     "Plus Jakarta Sans",
@@ -185,16 +203,17 @@
   font-weight: 800;
 }
 
+
 .rotating-word {
   display: inline-block;
 
   background: linear-gradient(
     100deg,
-    #071a33 0%,
-    #1e3a8a 30%,
-    #5b7db8 50%,
-    #1e3a8a 70%,
-    #0a192f 100%
+    #1c2143 0%,
+    #42586f 30%,
+    #70c390 50%,
+    #42586f 70%,
+    #1c2143 100%
   );
 
   -webkit-background-clip: text;
@@ -211,10 +230,12 @@
     opacity 0.35s ease;
 }
 
+
 .rotating-word-exit {
   transform: translateY(-10px);
   opacity: 0;
 }
+
 
 /* =========================================================
    DESCRIPTION
@@ -236,6 +257,7 @@
   font-weight: 400;
 }
 
+
 /* =========================================================
    BUTTONS
 ========================================================= */
@@ -249,6 +271,7 @@
 
   margin-bottom: 56px;
 }
+
 
 .primary-btn,
 .secondary-btn {
@@ -272,13 +295,18 @@
 
   cursor: pointer;
 
+  text-decoration: none;
+
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     background 0.25s ease;
 }
 
-/* PRIMARY BUTTON */
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
 
 .primary-btn {
   color: white;
@@ -287,57 +315,72 @@
 
   background: linear-gradient(
     135deg,
-    #071a33 0%,
-    #0a192f 30%,
-    #1e3a8a 70%,
-    #365a9c 100%
+    #1c2143 0%,
+    #293451 30%,
+    #42586f 70%,
+    #70c390 100%
   );
 
   box-shadow:
-    0 12px 30px rgba(10, 25, 47, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    0 12px 30px
+    rgba(28, 33, 67, 0.28),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.14);
 }
+
 
 .primary-btn:hover {
   transform: translateY(-3px);
 
   background: linear-gradient(
     135deg,
-    #0a192f 0%,
-    #1e3a8a 50%,
-    #4a6eae 100%
+    #1c2143 0%,
+    #42586f 50%,
+    #70c390 100%
   );
 
   box-shadow:
-    0 18px 40px rgba(10, 25, 47, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    0 18px 40px
+    rgba(28, 33, 67, 0.30),
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.18);
 }
 
-/* SECONDARY BUTTON */
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
 
 .secondary-btn {
-  color: #0a192f;
+  color: #1c2143;
 
-  border: 1px solid rgba(30, 58, 138, 0.18);
+  border: 1px solid
+    rgba(112, 195, 144, 0.32);
 
   background: rgba(255, 255, 255, 0.82);
 
   box-shadow:
-    0 8px 25px rgba(10, 25, 47, 0.05);
+    0 8px 25px
+    rgba(28, 33, 67, 0.05);
 }
+
 
 .secondary-btn:hover {
   transform: translateY(-3px);
 
-  border-color: rgba(30, 58, 138, 0.5);
+  border-color:
+    rgba(112, 195, 144, 0.70);
 
   box-shadow:
-    0 15px 35px rgba(30, 58, 138, 0.12);
+    0 15px 35px
+    rgba(112, 195, 144, 0.15);
 }
+
 
 .play-icon {
   font-size: 9px;
 }
+
 
 /* =========================================================
    PRODUCT VISUAL
@@ -353,6 +396,7 @@
   justify-content: center;
 }
 
+
 .image-glow {
   position: absolute;
 
@@ -364,29 +408,44 @@
 
   border-radius: 40px;
 
-  background: rgba(30, 58, 138, 0.18);
+  background:
+    rgba(112, 195, 144, 0.18);
 
   filter: blur(70px);
 
   z-index: -1;
 }
 
-/* DASHBOARD IMAGE */
+
+/* =========================================================
+   DASHBOARD IMAGE
+========================================================= */
 
 .dashboard-shot {
   width: 100%;
   height: auto;
 
+  display: block;
+
   border-radius: 20px;
 
-  border: 5px solid rgba(255, 255, 255, 0.95);
+  border:
+    5px solid
+    rgba(255, 255, 255, 0.95);
 
   box-shadow:
-    0 35px 80px rgba(10, 25, 47, 0.2),
-    0 15px 35px rgba(30, 58, 138, 0.12);
+    0 35px 80px
+    rgba(28, 33, 67, 0.20),
+    0 15px 35px
+    rgba(112, 195, 144, 0.15);
 
-  animation: dashboardFloat 6s ease-in-out infinite;
+  animation:
+    dashboardFloat
+    6s
+    ease-in-out
+    infinite;
 }
+
 
 @keyframes dashboardFloat {
   0%,
@@ -398,6 +457,7 @@
     transform: translateY(-12px);
   }
 }
+
 
 /* =========================================================
    FLOATING AI CHAT
@@ -413,8 +473,13 @@
 
   z-index: 8;
 
-  animation: chatFloat 5s ease-in-out infinite;
+  animation:
+    chatFloat
+    5s
+    ease-in-out
+    infinite;
 }
+
 
 .chat-floating img {
   display: block;
@@ -424,12 +489,17 @@
 
   border-radius: 16px;
 
-  border: 4px solid rgba(255, 255, 255, 0.96);
+  border:
+    4px solid
+    rgba(255, 255, 255, 0.96);
 
   box-shadow:
-    0 30px 70px rgba(10, 25, 47, 0.27),
-    0 10px 30px rgba(30, 58, 138, 0.15);
+    0 30px 70px
+    rgba(28, 33, 67, 0.27),
+    0 10px 30px
+    rgba(112, 195, 144, 0.16);
 }
+
 
 @keyframes chatFloat {
   0%,
@@ -442,6 +512,7 @@
   }
 }
 
+
 /* =========================================================
    FLOATING DECORATIONS
 ========================================================= */
@@ -451,15 +522,21 @@
 
   border-radius: 50%;
 
-  background: #1e3a8a;
+  background: #70c390;
 
   box-shadow:
-    0 0 20px rgba(30, 58, 138, 0.6);
+    0 0 20px
+    rgba(112, 195, 144, 0.60);
 
   z-index: 5;
 
-  animation: dotFloat 4s ease-in-out infinite;
+  animation:
+    dotFloat
+    4s
+    ease-in-out
+    infinite;
 }
+
 
 .dot-one {
   width: 9px;
@@ -468,6 +545,7 @@
   right: 6%;
   top: -3%;
 }
+
 
 .dot-two {
   width: 6px;
@@ -478,6 +556,7 @@
 
   animation-delay: 1s;
 }
+
 
 @keyframes dotFloat {
   0%,
@@ -492,17 +571,25 @@
   }
 }
 
+
 .floating-ring {
   position: absolute;
 
   border-radius: 50%;
 
-  border: 1px solid rgba(30, 58, 138, 0.28);
+  border:
+    1px solid
+    rgba(112, 195, 144, 0.40);
 
   z-index: 4;
 
-  animation: ringFloat 7s ease-in-out infinite;
+  animation:
+    ringFloat
+    7s
+    ease-in-out
+    infinite;
 }
+
 
 .ring-one {
   width: 42px;
@@ -512,16 +599,22 @@
   bottom: 10%;
 }
 
+
 @keyframes ringFloat {
   0%,
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform:
+      translateY(0)
+      rotate(0deg);
   }
 
   50% {
-    transform: translateY(-14px) rotate(180deg);
+    transform:
+      translateY(-14px)
+      rotate(180deg);
   }
 }
+
 
 /* =========================================================
    TABLET
@@ -538,6 +631,7 @@
     bottom: -6%;
   }
 }
+
 
 /* =========================================================
    MOBILE
@@ -584,6 +678,7 @@
   }
 }
 
+
 /* =========================================================
    SMALL MOBILE
 ========================================================= */
@@ -597,6 +692,7 @@
     font-size: 9px;
   }
 }
+
 
 /* =========================================================
    EXTRA RESPONSIVE FIX
@@ -612,7 +708,17 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+
+  .hero-container {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .rotating-word,

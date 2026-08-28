@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Hero.css";
 
 import dashboardImage from "../assets/gradelead-dashboard.png";
@@ -22,7 +23,10 @@ function Hero() {
       setIsSwitching(true);
 
       swapTimeout = setTimeout(() => {
-        setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+        setWordIndex(
+          (prev) => (prev + 1) % ROTATING_WORDS.length
+        );
+
         setIsSwitching(false);
       }, 350);
     }, 2400);
@@ -35,16 +39,23 @@ function Hero() {
 
   return (
     <section className="hero">
-      <div className="hero-grid"></div>
-      <div className="hero-glow hero-glow-one"></div>
-      <div className="hero-glow hero-glow-two"></div>
+      {/* Background grid */}
+      <div className="hero-grid" />
 
+      {/* Background glows */}
+      <div className="hero-glow hero-glow-one" />
+      <div className="hero-glow hero-glow-two" />
+
+      {/* Main hero content */}
       <div className="hero-container">
+
+        {/* Badge */}
         <div className="hero-badge">
           <span className="badge-sparkle">✦</span>
-          AI-POWERED LEAD MANAGEMENT
+          <span>AI-POWERED LEAD MANAGEMENT</span>
         </div>
 
+        {/* Main heading */}
         <h1>
           Turn Every Lead Into
           <br />
@@ -59,32 +70,43 @@ function Hero() {
           </span>
         </h1>
 
+        {/* Description */}
         <p className="hero-description">
           Capture, qualify and convert leads with AI-powered automation —
           so no opportunity sits in your inbox untouched.
         </p>
 
+        {/* Buttons */}
         <div className="hero-buttons">
-          <button className="primary-btn">
-            Get Started
+          <Link
+            to="/get-started"
+            className="primary-btn"
+          >
+            <span>Get Started</span>
             <span>→</span>
-          </button>
+          </Link>
 
-          <button className="secondary-btn">
+          <Link
+            to="/features"
+            className="secondary-btn"
+          >
             <span className="play-icon">▶</span>
-            Explore GradLead
-          </button>
+            <span>Explore GradLead</span>
+          </Link>
         </div>
 
+        {/* Product visual */}
         <div className="hero-visual">
-          <div className="image-glow"></div>
+          <div className="image-glow" />
 
+          {/* Dashboard image */}
           <img
             className="dashboard-shot"
             src={dashboardImage}
             alt="GradLead Dashboard"
           />
 
+          {/* AI Chat floating card */}
           <div className="chat-floating">
             <img
               src={aiChatImage}
@@ -92,9 +114,10 @@ function Hero() {
             />
           </div>
 
-          <div className="floating-dot dot-one"></div>
-          <div className="floating-dot dot-two"></div>
-          <div className="floating-ring ring-one"></div>
+          {/* Decorative elements */}
+          <div className="floating-dot dot-one" />
+          <div className="floating-dot dot-two" />
+          <div className="floating-ring ring-one" />
         </div>
       </div>
     </section>
