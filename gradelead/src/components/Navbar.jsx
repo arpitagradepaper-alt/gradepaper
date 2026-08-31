@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import "./Navbar.css";
 
 import gradleadLogo from "../assets/gradlead-logo.png";
+
+/* =========================================================
+   MENU DATA
+========================================================= */
 
 const MENU_DATA = {
   features: {
@@ -261,6 +265,39 @@ const MENU_DATA = {
     ],
   },
 
+  /* =========================================================
+     INDUSTRIES
+  ========================================================= */
+
+  industries: {
+    items: [
+      {
+        icon: "⌂",
+        title: "Real Estate",
+        description:
+          "Capture property inquiries, identify serious buyers, and convert more real estate opportunities.",
+        links: [
+          {
+            label: "Real Estate Overview",
+            to: "/industries/real-estate",
+          },
+        ],
+      },
+      {
+        icon: "▣",
+        title: "Education",
+        description:
+          "Capture student inquiries, understand enrollment intent, and engage prospective students faster.",
+        links: [
+          {
+            label: "Education Overview",
+            to: "/industries/education",
+          },
+        ],
+      },
+    ],
+  },
+
   integrations: {
     items: [
       {
@@ -347,6 +384,11 @@ const MENU_DATA = {
   },
 };
 
+
+/* =========================================================
+   NAVIGATION ITEMS
+========================================================= */
+
 const NAV_ITEMS = [
   {
     key: "features",
@@ -364,6 +406,11 @@ const NAV_ITEMS = [
     to: "/#how-it-works",
   },
   {
+    key: "industries",
+    label: "Industries",
+    to: "/#industries",
+  },
+  {
     key: "integrations",
     label: "Integrations",
     to: "/#integrations",
@@ -372,8 +419,14 @@ const NAV_ITEMS = [
 
 const MOBILE_BREAKPOINT = 1200;
 
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
 export default function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" &&
@@ -384,19 +437,23 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileActiveMenu, setMobileActiveMenu] = useState(null);
 
+
+  /* =========================================================
+     RESPONSIVE
+  ========================================================= */
+
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth <= MOBILE_BREAKPOINT;
+      const mobile =
+        window.innerWidth <= MOBILE_BREAKPOINT;
 
       setIsMobile(mobile);
 
-      if (!mobile) {
-        setMobileMenuOpen(false);
-        setMobileActiveMenu(null);
-      }
-
       if (mobile) {
         setActiveMenu(null);
+      } else {
+        setMobileMenuOpen(false);
+        setMobileActiveMenu(null);
       }
     };
 
@@ -409,11 +466,21 @@ export default function Navbar() {
     };
   }, []);
 
+
+  /* =========================================================
+     CLOSE MENUS ON PAGE CHANGE
+  ========================================================= */
+
   useEffect(() => {
     setActiveMenu(null);
     setMobileMenuOpen(false);
     setMobileActiveMenu(null);
   }, [location.pathname]);
+
+
+  /* =========================================================
+     BODY LOCK
+  ========================================================= */
 
   useEffect(() => {
     if (isMobile && mobileMenuOpen) {
@@ -426,6 +493,11 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isMobile, mobileMenuOpen]);
+
+
+  /* =========================================================
+     ESCAPE
+  ========================================================= */
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -443,21 +515,76 @@ export default function Navbar() {
     };
   }, []);
 
+
+  /* =========================================================
+     DESKTOP MENU
+  ========================================================= */
+
+  const handleDesktopMenuEnter = (menuKey) => {
+    if (!isMobile) {
+      setActiveMenu(menuKey);
+    }
+  };
+
+
+  /* =========================================================
+     DESKTOP NAV CLICK
+  ========================================================= */
+
+  const handleNavClick = (event, menu) => {
+    /*
+      Industries should only open its dropdown.
+      The actual pages are inside the dropdown.
+    */
+
+    if (menu.key === "industries") {
+      event.preventDefault();
+
+      setActiveMenu((previous) =>
+        previous === "industries"
+          ? null
+          : "industries"
+      );
+
+      return;
+    }
+
+    setActiveMenu(null);
+  };
+
+
+  /* =========================================================
+     MOBILE MENU
+  ========================================================= */
+
   const toggleMobileMenu = () => {
-    setMobileMenuOpen((previous) => !previous);
+    setMobileMenuOpen(
+      (previous) => !previous
+    );
+
     setMobileActiveMenu(null);
   };
+
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setMobileActiveMenu(null);
   };
 
+
   const toggleMobileDropdown = (menuKey) => {
-    setMobileActiveMenu((previous) =>
-      previous === menuKey ? null : menuKey
+    setMobileActiveMenu(
+      (previous) =>
+        previous === menuKey
+          ? null
+          : menuKey
     );
   };
+
+
+  /* =========================================================
+     MOBILE NAVIGATION PORTAL
+  ========================================================= */
 
   const mobileNavigation =
     isMobile && mobileMenuOpen
@@ -468,34 +595,44 @@ export default function Navbar() {
             aria-modal="true"
           >
             <div className="mobile-navigation">
+
               <div className="mobile-navigation-inner">
+
                 {NAV_ITEMS.map((menu) => (
                   <div
                     className="mobile-menu-section"
                     key={menu.key}
                   >
+
                     <div className="mobile-menu-row">
+
                       <button
                         type="button"
                         className="mobile-menu-title"
                         onClick={() =>
-                          toggleMobileDropdown(menu.key)
+                          toggleMobileDropdown(
+                            menu.key
+                          )
                         }
                       >
                         {menu.label}
                       </button>
 
+
                       <button
                         type="button"
                         className="mobile-menu-arrow-button"
                         onClick={() =>
-                          toggleMobileDropdown(menu.key)
+                          toggleMobileDropdown(
+                            menu.key
+                          )
                         }
                         aria-label={`Toggle ${menu.label}`}
                       >
                         <span
                           className={
-                            mobileActiveMenu === menu.key
+                            mobileActiveMenu ===
+                            menu.key
                               ? "arrow-open"
                               : ""
                           }
@@ -503,67 +640,113 @@ export default function Navbar() {
                           ⌄
                         </span>
                       </button>
+
                     </div>
 
-                    {mobileActiveMenu === menu.key && (
+
+                    {mobileActiveMenu ===
+                      menu.key && (
                       <div className="mobile-dropdown">
-                        {MENU_DATA[menu.key].items.map(
+
+                        {MENU_DATA[
+                          menu.key
+                        ].items.map(
                           (item, index) => (
                             <div
                               className="mobile-dropdown-card"
                               key={`${menu.key}-${index}`}
                             >
+
                               <div className="mobile-card-top">
+
                                 <div className="mobile-card-icon">
                                   {item.icon}
                                 </div>
 
-                                <div className="mobile-card-content">
-                                  <h3>{item.title}</h3>
 
-                                  <p>{item.description}</p>
+                                <div className="mobile-card-content">
+
+                                  <h3>
+                                    {item.title}
+                                  </h3>
+
+                                  <p>
+                                    {item.description}
+                                  </p>
+
 
                                   <div className="mobile-card-links">
+
                                     {item.links.map(
-                                      (link, linkIndex) => (
+                                      (
+                                        link,
+                                        linkIndex
+                                      ) => (
                                         <Link
                                           key={`${menu.key}-${index}-${linkIndex}`}
                                           to={link.to}
-                                          onClick={closeMobileMenu}
+                                          onClick={
+                                            closeMobileMenu
+                                          }
                                         >
                                           <span>
-                                            {link.label}
+                                            {
+                                              link.label
+                                            }
                                           </span>
 
-                                          <span>→</span>
+                                          <span>
+                                            →
+                                          </span>
                                         </Link>
                                       )
                                     )}
+
                                   </div>
+
                                 </div>
+
                               </div>
+
                             </div>
                           )
                         )}
+
                       </div>
                     )}
+
                   </div>
                 ))}
+
+
+                {/* MOBILE CTA */}
 
                 <Link
                   to="/get-started"
                   className="mobile-cta"
                   onClick={closeMobileMenu}
                 >
-                  <span>Get Started</span>
-                  <span>→</span>
+                  <span>
+                    Get Started
+                  </span>
+
+                  <span>
+                    →
+                  </span>
                 </Link>
+
               </div>
+
             </div>
           </div>,
           document.body
         )
       : null;
+
+
+  /* =========================================================
+     RENDER
+  ========================================================= */
 
   return (
     <>
@@ -575,39 +758,58 @@ export default function Navbar() {
           }
         }}
       >
+
         <div className="navbar-container">
 
-          {/* LOGO */}
+          {/* =================================================
+              LOGO
+          ================================================= */}
+
           <Link
             to="/"
             className="navbar-logo"
             onClick={closeMobileMenu}
           >
+
             <span className="logo-icon">
+
               <img
                 src={gradleadLogo}
                 alt="GradLead AI Logo"
               />
+
             </span>
+
 
             <span className="logo-text">
               Grad<span>Lead AI</span>
             </span>
+
           </Link>
+
+
+          {/* =================================================
+              DESKTOP NAV
+          ================================================= */}
 
           {!isMobile && (
             <nav
               className="navbar-links"
               aria-label="Main navigation"
             >
+
               {NAV_ITEMS.map((item) => (
+
                 <div
                   className="nav-menu-item"
                   key={item.key}
                   onMouseEnter={() =>
-                    setActiveMenu(item.key)
+                    handleDesktopMenuEnter(
+                      item.key
+                    )
                   }
                 >
+
                   <Link
                     to={item.to}
                     className={
@@ -615,22 +817,43 @@ export default function Navbar() {
                         ? "nav-link active"
                         : "nav-link"
                     }
+                    onClick={(event) =>
+                      handleNavClick(
+                        event,
+                        item
+                      )
+                    }
                   >
-                    <span>{item.label}</span>
+
+                    <span>
+                      {item.label}
+                    </span>
+
 
                     <span className="nav-arrow">
-                      {activeMenu === item.key
+                      {activeMenu ===
+                      item.key
                         ? "⌃"
                         : "⌄"}
                     </span>
+
                   </Link>
+
                 </div>
+
               ))}
+
             </nav>
           )}
 
+
+          {/* =================================================
+              DESKTOP CTA
+          ================================================= */}
+
           {!isMobile && (
             <div className="navbar-actions">
+
               <Link
                 to="/get-started"
                 className="navbar-cta"
@@ -638,8 +861,14 @@ export default function Navbar() {
                 Get Started
                 <span>→</span>
               </Link>
+
             </div>
           )}
+
+
+          {/* =================================================
+              MOBILE HAMBURGER
+          ================================================= */}
 
           {isMobile && (
             <button
@@ -656,14 +885,24 @@ export default function Navbar() {
                   ? "Close navigation menu"
                   : "Open navigation menu"
               }
-              aria-expanded={mobileMenuOpen}
+              aria-expanded={
+                mobileMenuOpen
+              }
             >
+
               <span />
               <span />
               <span />
+
             </button>
           )}
+
         </div>
+
+
+        {/* =================================================
+            DESKTOP MEGA MENU
+        ================================================= */}
 
         {!isMobile && activeMenu && (
           <div
@@ -672,42 +911,76 @@ export default function Navbar() {
               setActiveMenu(activeMenu)
             }
           >
+
             <div className="mega-menu-container">
-              {MENU_DATA[activeMenu].items.map(
+
+              {MENU_DATA[
+                activeMenu
+              ].items.map(
                 (item, index) => (
+
                   <div
                     className="mega-column"
                     key={`${activeMenu}-${index}`}
                   >
+
                     <div className="mega-icon">
                       {item.icon}
                     </div>
 
-                    <h3>{item.title}</h3>
 
-                    <p>{item.description}</p>
+                    <h3>
+                      {item.title}
+                    </h3>
+
+
+                    <p>
+                      {item.description}
+                    </p>
+
 
                     <div className="mega-links">
+
                       {item.links.map(
-                        (link, linkIndex) => (
+                        (
+                          link,
+                          linkIndex
+                        ) => (
+
                           <Link
                             to={link.to}
                             key={`${activeMenu}-${index}-${linkIndex}`}
+                            onClick={() =>
+                              setActiveMenu(null)
+                            }
                           >
                             {link.label}
                           </Link>
+
                         )
                       )}
+
                     </div>
+
                   </div>
+
                 )
               )}
+
             </div>
+
           </div>
         )}
+
       </header>
 
+
+      {/* =====================================================
+          MOBILE PORTAL
+      ===================================================== */}
+
       {mobileNavigation}
+
     </>
   );
 }

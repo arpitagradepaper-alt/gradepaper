@@ -94,7 +94,7 @@ function Hero() {
             <span>Explore GradLead</span>
           </Link>
         </div>
-
+        
         {/* Product visual */}
         <div className="hero-visual">
           <div className="image-glow" />

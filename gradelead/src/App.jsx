@@ -1,54 +1,58 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
+import ScrollToHash from "./ScrollToHash.jsx";
 
 import Home from "./Home.jsx";
 import BlogDetails from "./components/BlogDetails.jsx";
-import ScrollToHash from "./ScrollToHash.jsx";
 import BlogsPage from "./components/BlogsPage.jsx";
 import AllBlogs from "./components/AllBlogs.jsx";
+
+import RealEstate from "./components/RealEstate.jsx";
+import Education from "./components/Education.jsx";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* Scroll to hash / section */}
       <ScrollToHash />
 
-      {/* Navbar + Mobile Hamburger */}
       <Navbar />
 
       <Routes>
-        {/* =========================
-            HOME PAGE
-        ========================= */}
+
+        {/* HOME */}
         <Route
           path="/"
           element={<Home />}
         />
 
-        {/* =========================
-            BLOGS PAGE
-        ========================= */}
+        {/* INDUSTRIES */}
+        <Route
+          path="/industries/real-estate"
+          element={<RealEstate />}
+        />
+
+        <Route
+          path="/industries/education"
+          element={<Education />}
+        />
+
+        {/* BLOGS */}
         <Route
           path="/blogs"
           element={<BlogsPage />}
         />
 
-        {/* =========================
-            BLOG DETAILS
-        ========================= */}
         <Route
           path="/blog/:slug"
           element={<BlogDetails />}
         />
 
-        {/* =========================
-            ALL BLOGS
-        ========================= */}
         <Route
           path="/all-blogs"
           element={<AllBlogs />}
         />
+
       </Routes>
     </BrowserRouter>
   );
