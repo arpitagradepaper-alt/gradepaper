@@ -124,9 +124,7 @@ function EducationStudentJourney() {
           </div>
 
 
-          {/* =========================
-              BOTTOM INSIGHT
-          ========================= */}
+         
 
           <div className="student-journey-insight">
 

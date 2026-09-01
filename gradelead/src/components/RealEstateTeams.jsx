@@ -13,9 +13,7 @@ function RealEstateTeams() {
 
       <div className="real-estate-teams-container">
 
-        {/* =====================================================
-            HEADING
-        ===================================================== */}
+        
         <div className="real-estate-teams-heading">
 
           <div className="real-estate-teams-eyebrow">
@@ -142,9 +140,7 @@ function RealEstateTeams() {
       
 
 
-        {/* =====================================================
-            BOTTOM RESULT
-        ===================================================== */}
+      
         <div className="real-estate-teams-result">
 
           <div className="result-icon">

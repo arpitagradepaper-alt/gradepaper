@@ -12,37 +12,34 @@ function EducationAIRadar() {
 
       <div className="education-ai-radar-container">
 
-        {/* =====================================================
-            LEFT — AI RADAR VISUAL
-        ===================================================== */}
+       
 
         <div className="education-radar-visual">
 
           <div className="radar-ambient-glow"></div>
 
-          {/* Radar */}
+          
           <div className="radar-system">
 
-            {/* Radar rings */}
+            
             <div className="radar-ring radar-ring-one"></div>
             <div className="radar-ring radar-ring-two"></div>
             <div className="radar-ring radar-ring-three"></div>
             <div className="radar-ring radar-ring-four"></div>
 
-            {/* Cross lines */}
+           
             <div className="radar-cross radar-cross-horizontal"></div>
             <div className="radar-cross radar-cross-vertical"></div>
 
-            {/* Radar sweep */}
             <div className="radar-sweep"></div>
 
-            {/* Orbit dots */}
+           
             <span className="radar-dot radar-dot-one"></span>
             <span className="radar-dot radar-dot-two"></span>
             <span className="radar-dot radar-dot-three"></span>
             <span className="radar-dot radar-dot-four"></span>
 
-            {/* AI CORE */}
+            
             <div className="radar-core">
 
               <div className="radar-core-ring"></div>
@@ -70,9 +67,7 @@ function EducationAIRadar() {
           </div>
 
 
-          {/* =================================================
-              FLOATING STUDENT CARDS
-          ================================================= */}
+         
 
           <div className="radar-student-card radar-card-top">
 
@@ -154,8 +149,6 @@ function EducationAIRadar() {
           </div>
 
 
-          {/* AI ACTIVE LABEL */}
-
           <div className="radar-active-label">
 
             <div className="radar-active-icon">
@@ -172,10 +165,7 @@ function EducationAIRadar() {
         </div>
 
 
-        {/* =====================================================
-            RIGHT — CONTENT
-        ===================================================== */}
-
+       
         <div className="education-ai-radar-content">
 
           <div className="education-radar-eyebrow">
@@ -188,7 +178,7 @@ function EducationAIRadar() {
 
 
           <h2>
-            Your AI Radar for
+            AI Radar for
             <span> Every Student Opportunity.</span>
           </h2>
 
@@ -200,9 +190,7 @@ function EducationAIRadar() {
           </p>
 
 
-          {/* =================================================
-              FEATURES
-          ================================================= */}
+         
 
           <div className="education-radar-features">
 
@@ -271,7 +259,7 @@ function EducationAIRadar() {
 
                 <p>
                   Get suggested next actions and automate follow-ups
-                  to convert interest into enrollment.
+                  to convert student's interest into a student's enrollment.
                 </p>
               </div>
 
@@ -280,10 +268,7 @@ function EducationAIRadar() {
           </div>
 
 
-          {/* =================================================
-              BOTTOM AI STATUS
-          ================================================= */}
-
+          
           <div className="education-radar-status">
 
             <div className="radar-status-bot">
@@ -305,7 +290,7 @@ function EducationAIRadar() {
               </div>
 
               <small>
-                Radar active and scanning student signals...
+                Radar active and scanning student signals....
               </small>
 
             </div>
@@ -317,19 +302,17 @@ function EducationAIRadar() {
       </div>
 
 
-      {/* =====================================================
-          BOTTOM METRICS
-      ===================================================== */}
+     
 
       <div className="education-radar-metrics">
 
         <div className="radar-metric">
-          <strong>12.8K+</strong>
+          <strong>12K+</strong>
           <span>Total Inquiries</span>
         </div>
 
         <div className="radar-metric">
-          <strong>3.6K+</strong>
+          <strong>3.2K+</strong>
           <span>High Intent Students</span>
         </div>
 

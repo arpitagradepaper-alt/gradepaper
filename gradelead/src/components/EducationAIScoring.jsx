@@ -6,9 +6,7 @@ function EducationAIScoring() {
     <section className="education-ai-scoring-section">
       <div className="education-ai-scoring-container">
 
-        {/* =========================
-            LEFT CONTENT
-        ========================= */}
+        
         <div className="education-ai-scoring-content">
 
           <div className="education-ai-scoring-eyebrow">
@@ -30,7 +28,7 @@ function EducationAIScoring() {
 
           <div className="education-ai-scoring-points">
 
-            {/* POINT 1 */}
+           
             <div className="education-ai-scoring-point">
               <span className="scoring-check">✓</span>
 
@@ -43,7 +41,7 @@ function EducationAIScoring() {
               </div>
             </div>
 
-            {/* POINT 2 */}
+            
             <div className="education-ai-scoring-point">
               <span className="scoring-check">✓</span>
 
@@ -56,7 +54,7 @@ function EducationAIScoring() {
               </div>
             </div>
 
-            {/* POINT 3 */}
+            
             <div className="education-ai-scoring-point">
               <span className="scoring-check">✓</span>
 
@@ -79,9 +77,7 @@ function EducationAIScoring() {
         </div>
 
 
-        {/* =========================
-            RIGHT AI VISUAL
-        ========================= */}
+       
         <div className="education-ai-scoring-visual">
 
           <div className="education-ai-scoring-glow" />

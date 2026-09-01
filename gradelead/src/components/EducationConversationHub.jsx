@@ -87,12 +87,12 @@ function EducationConversationHub() {
 
           <div className="conversation-ambient-glow" />
 
-          {/* HUB RINGS */}
+          
           <div className="conversation-ring conversation-ring-one" />
           <div className="conversation-ring conversation-ring-two" />
           <div className="conversation-ring conversation-ring-three" />
 
-          {/* MOVING SIGNALS */}
+         
           <div className="conversation-signal signal-a">
             <span>●</span>
             Student
@@ -109,7 +109,7 @@ function EducationConversationHub() {
           </div>
 
 
-          {/* AI CENTER */}
+          
           <div className="conversation-ai-core">
 
             <div className="conversation-core-glow" />
@@ -131,13 +131,12 @@ function EducationConversationHub() {
           </div>
 
 
-          {/* CONNECTION LINE */}
+          
           <div className="conversation-connection connection-a" />
           <div className="conversation-connection connection-b" />
           <div className="conversation-connection connection-c" />
 
 
-          {/* CHAT CARD 1 */}
           <div className="conversation-card conversation-card-one">
 
             <div className="conversation-card-top">
@@ -161,7 +160,7 @@ function EducationConversationHub() {
           </div>
 
 
-          {/* CHAT CARD 2 */}
+          
           <div className="conversation-card conversation-card-two">
 
             <div className="conversation-card-top">

@@ -8,9 +8,7 @@ export default function RealEstateConversion() {
 
       <div className="conversion-container">
 
-        {/* =================================================
-            LEFT — CONTENT
-        ================================================= */}
+        
         <div className="conversion-content">
 
           <div className="conversion-label">
@@ -37,9 +35,6 @@ export default function RealEstateConversion() {
           </p>
 
 
-          {/* =================================================
-              POINTS
-          ================================================= */}
           <div className="conversion-points">
 
             <div className="conversion-point">
@@ -99,9 +94,6 @@ export default function RealEstateConversion() {
         </div>
 
 
-        {/* =================================================
-            RIGHT — PREMIUM VISUAL
-        ================================================= */}
         <div className="conversion-visual">
 
           <div className="conversion-orb"></div>
@@ -151,9 +143,7 @@ export default function RealEstateConversion() {
       </div>
 
 
-      {/* =================================================
-          BOTTOM STATEMENT
-      ================================================= */}
+     
       <div className="conversion-bottom">
 
         <span></span>

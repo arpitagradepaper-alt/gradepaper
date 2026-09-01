@@ -8,9 +8,7 @@ export default function RealEstateHero() {
 
       <div className="real-estate-hero-container">
 
-        {/* =========================
-            LEFT CONTENT
-        ========================= */}
+       
         <div className="real-estate-hero-content">
 
           <div className="real-estate-badge">
@@ -33,9 +31,7 @@ export default function RealEstateHero() {
             workspace.
           </p>
 
-          {/* =========================
-              BUTTONS
-          ========================= */}
+          
           <div className="real-estate-hero-buttons">
 
             <a
@@ -50,9 +46,7 @@ export default function RealEstateHero() {
 
           </div>
 
-          {/* =========================
-              STATS
-          ========================= */}
+      
           <div className="real-estate-stats">
 
             <div className="real-estate-stat">
@@ -136,9 +130,7 @@ export default function RealEstateHero() {
         
 
 
-        {/* =========================
-            RIGHT VISUAL
-        ========================= */}
+      
         <div className="real-estate-hero-visual">
 
           <div className="hero-glow"></div>

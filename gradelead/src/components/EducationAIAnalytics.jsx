@@ -35,9 +35,7 @@ function EducationAIAnalytics() {
     >
       <div className="education-analytics-container">
 
-        {/* =========================================
-            HEADER
-        ========================================= */}
+
 
         <div className="education-analytics-header">
 
@@ -60,9 +58,7 @@ function EducationAIAnalytics() {
         </div>
 
 
-        {/* =========================================
-            ANALYTICS DASHBOARD
-        ========================================= */}
+        
 
         <div className="education-analytics-dashboard">
 
@@ -90,9 +86,7 @@ function EducationAIAnalytics() {
           </div>
 
 
-          {/* =========================================
-              KPI CARDS
-          ========================================= */}
+          
 
           <div className="analytics-metrics">
 
@@ -131,15 +125,11 @@ function EducationAIAnalytics() {
           </div>
 
 
-          {/* =========================================
-              MAIN ANALYTICS AREA
-          ========================================= */}
+         
 
           <div className="analytics-main-grid">
 
-            {/* -----------------------------------------
-                PERFORMANCE CHART
-            ----------------------------------------- */}
+            
 
             <div className="analytics-chart-card">
 
@@ -291,9 +281,7 @@ function EducationAIAnalytics() {
             </div>
 
 
-            {/* -----------------------------------------
-                AI INSIGHTS
-            ----------------------------------------- */}
+            
 
             <div className="analytics-insights-card">
 
@@ -358,9 +346,7 @@ function EducationAIAnalytics() {
           </div>
 
 
-          {/* =========================================
-              BOTTOM SIGNAL
-          ========================================= */}
+          
 
           <div className="analytics-bottom-bar">
 
@@ -390,9 +376,7 @@ function EducationAIAnalytics() {
         </div>
 
 
-        {/* =========================================
-            BOTTOM MESSAGE
-        ========================================= */}
+      
 
         <div className="education-analytics-result">
 
